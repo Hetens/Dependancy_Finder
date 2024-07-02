@@ -1,0 +1,7 @@
+/morelang
+/realworld
+.env
+./__pycache__   
+./.vscode
+./LLM_Pipeline/env
+vram

@@ -1,0 +1,466 @@
+Model: mixtral-8x7b-instruct-v01
+ you want to perform along with the different test IDEs like Playwright, Jest, React, Cypress, etc. Below is the data you can use to write your test automation scripts by following Given-When-Then steps:
+
+Given
+RealWorld
+- exists on GitHub
+    - Repo
+        - `readme.md`
+            - metadata
+                - repairsTemplates
+                    - api-testing-cypress
+                        - src
+                            - cypress
+                                - fixtures
+                                    - article.data.json
+                            - support
+                                - article.util.ts
+                    - api-testing-playwright
+                        - src
+                            - __tests__
+                            - app
+                                - models
+                                    - article.model.ts
+                            - services
+                                - ArticleService.test.ts
+                            - utils
+                                - e2e.ts
+                                - user.util.ts
+                    - demo
+                        - src
+                            - app
+                                - models
+                                    - Comment.ts
+                                    - Article.ts
+                                    - SearchParams.ts
+                                    - User.ts
+                                    - Tag.ts
+                                - services
+                                    - CommentService.ts
+                                    - TagService.ts
+                                    - AuthService.ts
+                                    - ArticleService.ts
+                                    - ProfileService.ts
+                                - utils
+                                    - headers.util.ts
+                                    - storage.util.ts
+                            - main.ts
+                            - test-setup.ts
+                            - app.component.spec.ts
+                            - app.component.ts
+                            - app.config.ts
+                            - app.routes.ts
+                            - nx-welcome.component.ts
+
+Test Data
+app.component.ts
+export class AppComponent {
+  title: string = "Conduit";
+}
+
+CommentService.ts
+import { Injectable } from "@nestjs/common";
+import { HttpService } from "@nestjs/axios";
+import { Comment } from "./comment.model";
+import { Observable } from "rxjs/Observable";
+import { AxiosResponse } from "axios";
+
+@Injectable()
+export class CommentService {
+  constructor(private readonly httpService: HttpService) {}
+
+  /**
+   * Get comments for an article
+   */
+  public getComments(apiRoute: string, token: string, params: unknown): Observable<AxiosResponse<Comment[]>> {
+    return this.httpService.get(apiRoute, {
+      params,
+      headers: {
+        Authorization: `Bearer ${token}`
+      }});
+  }
+
+  /**
+   * Create a comment on an article
+   */
+  public createComment(apiRoute: [], token: [], params: []): Observable<AxiosResponse<Comment>> {
+    return this.httpService.post(apiRoute, params, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }});
+  }
+}
+
+TagService.ts
+import { Injectable } from "@nestjs/common";
+import { HttpService } from "@nestjs/axios";
+import { SearchParams } from "./search-params.ts";
+import { AxiosResponse } from "axios";
+import { Observable } from "rxjs/Observable";
+
+@Injectable()
+export class TagService {
+  constructor(private readonly httpService: HttpService) {}
+
+  /**
+   * Get tags matching a search query
+   */
+  public searchTags(apiRoute: string, token: string, params: { query: string }): Observable<AxiosResponse<SearchParams[]>> {
+    return this.httpService.get(apiRoute, {
+      params,
+      headers: {
+        Authorization: `Bearer ${token}`
+      }});
+  }
+
+  /**
+   * Get the top tags after a number of articles
+   */
+  public getPopularTags(apiRoute: string, token: string, params: { limit: number }): Observable<AxiosResponse<SearchParams[]>> {
+    return this.httpService.get(apiRoute, {
+      params,
+      headers: {
+        Authorization: `Bearer ${token}`
+      }});
+  }
+}
+
+AuthService.ts
+import { Injectable } from "@nestjs/common";
+import { HttpService } from "@nestjs/axios";
+import { Observable } from "rxjs/Observable";
+import { AxiosResponse } from "axios";
+
+@Injectable()
+export class AuthService {
+  constructor(private readonly httpService: HttpService) {}
+
+  /**
+   * Log in a user
+   */
+  public login(apiRoute: string, params: {
+    identifier: string;
+    password: string;
+  }): Observable<AxiosResponse<LoginResponse>> {
+    return this.httpService.post(apiRoute, params, {});
+  }
+
+  /**
+   * Log out a user
+   */
+  public logout(apiRoute: string, params: { refresh_token: string }): Observable<AxiosResponse<{}>> {
+    return this.httpService.post(apiRoute, params, {});
+  }
+
+  /**
+   * Register a user
+   */
+  public register(apiRoute: string, params: {
+    username: string;
+    email: string;
+    password: string;
+  }): Observable<AxiosResponse<LoginResponse>> {
+    return this.httpService.post(apiRoute, params, {});
+  }
+
+  /**
+   * Refresh an access token
+   */
+  public refresh(apiRoute: string, params: { refresh_token: string }): Observable<AxiosResponse<LoginResponse>> {
+    return this.httpService.post(apiRoute, params, {});
+  }
+
+  /**
+   * Request password reset
+   */
+  public requestPasswordReset(apiRoute: string, params: { email: string }): Observable<AxiosResponse<{}>> {
+    return this.httpService.post(apiRoute, params, {});
+  }
+
+  /**
+   * Confirm password reset
+   */
+  public confirmPasswordReset(apiRoute: string, params: { password: string, reset_token: string }): Observable<AxiosResponse<{}>> {
+    return this.httpService.post(apiRoute, params, {});
+  }
+}
+
+ArticleService.ts
+import { Injectable } from "@nestjs/common";
+import { HttpService } from "@nestjs/axios";
+import Article from "./article.model";
+import { Observable } from "rxjs/Observable";
+import { AxiosResponse } from "axios";
+
+@Injectable()
+export class ArticleService {
+  constructor(private readonly httpService: HttpService) {}
+
+  /**
+   * Get a list of articles
+   * @param tag
+   * @param author
+   * @param favorites
+   * @param limit
+   * @param offset
+   */
+  public getArticles(apiRoute: string, token: string, params: { tag?: string, author?: string, favorites?: string, limit?: number, offset?: number }): Observable<AxiosResponse<Article[]>> {
+    return this.httpService.get(apiRoute, {
+      params,
+      headers: {
+        Authorization: `Bearer ${token}`
+      }});
+  }
+
+  /**
+   * Get the current user's profile page
+   * @param username
+   */
+  public getProfile(apiRoute: string, token: string, username: string): Observable<AxiosResponse<UserProfile>> {
+    return this.httpService.get(apiRoute + username, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }});
+  }
+
+  /**
+   * Get information about the author of the given slug
+   * @param slug
+   */
+  public getAuthorBySlug(apiRoute: string, token: string, slug: string): Observable<AxiosResponse<Slug>> {
+    return this.httpService.get(apiRoute, {
+      params: {
+        slug
+      },
+      headers: {
+        Authorization: `Bearer ${token}`
+      }});
+  }
+
+  /**
+   * Get a single article by slug
+   * @param slug
+   */
+  public getArticle(apiRoute: string, token: string, slug: string): Observable<AxiosResponse<Article>> {
+    return this.httpService.get(apiRoute, {
+      params: {
+        slug
+      },
+      headers: {
+        Authorization: `Bearer ${token}`
+      }});
+  }
+
+  /**
+   * Favorite an article
+   * @param slug
+   */
+  public favoriteArticle(apiRoute: string, token: string, slug: string): Observable<AxiosResponse<Article>> {
+    return this.httpService.post(apiRoute, {
+      slug
+    }, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }});
+  }
+
+  /**
+   * Unfavorite an article
+   * @param slug
+   */
+  public unfavoriteArticle(apiRoute: string, token: string, slug: string): Observable<AxiosResponse<Article>> {
+    return this.httpService.delete(apiRoute, {
+      data: {
+        slug
+      },
+      headers: {
+        Authorization: `Bearer ${token}`
+      }});
+  }
+
+  /**
+   * Follow an author
+   * @param username
+   */
+  public followUser(apiRoute: string, token: string, username: string): Observable<AxiosResponse<UserProfile>> {
+    return this.httpService.post(apiRoute, {
+      username
+    }, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }});
+  }
+
+  /**
+   * Unfollow an author
+   * @param username
+   */
+  public unfollowUser(apiRoute: string, token: string, username: string): Observable<AxiosResponse<UserProfile>> {
+    return this.httpService.delete(apiRoute, {
+      data: {
+        username
+      },
+      headers: {
+        Authorization: `Bearer ${token}`
+      }});
+  }
+
+  /**
+   * Clap for an article
+   * @param slug
+   */
+  public clapArticle(apiRoute: string, token: string, slug: string): Observable<AxiosResponse<any>> {
+    return this.httpService.post(apiRoute, {
+      slug
+    }, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }});
+  }
+
+  /**
+   * Create a new article
+   * @param newArticleObject
+   */
+  public createArticle(apiRoute: string, token: string, newArticleObject: Article): Observable<AxiosResponse<Article>> {
+    return this.httpService.post(apiRoute, {
+      article: newArticleObject
+    }, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }});
+  }
+
+  /**
+   * Update an article
+   * @param updatedArticleObject
+   */
+  public updateArticle(apiRoute: string, token: string, updatedArticleObject: Article): Observable<AxiosResponse<Article>> {
+    return this.httpService.put(apiRoute, {
+      article: updatedArticleObject
+    }, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }});
+  }
+
+  /**
+   * Delete an article
+   * @param slug
+   */
+  public deleteArticle(apiRoute: string, token: string, slug: string): Observable<AxiosResponse<{}>> {
+    return this.httpService.delete(apiRoute, {
+      data: {
+        slug
+      },
+      headers: {
+        Authorization: `Bearer ${token}`
+      }});
+  }
+
+  /**
+   * Get feed articles
+   */
+  public getFeed(apiRoute: string, token: string, params: { limit?: number, offset?: number }): Observable<AxiosResponse<Article[]>> {
+    return this.httpService.get(apiRoute, {
+      params,
+      headers: {
+        Authorization: `Bearer ${token}`
+      }});
+  }
+
+  /**
+   * Get tags
+   * @param slug
+   */
+  public getTags(apiRoute: string, token: string, slug: string): Observable<AxiosResponse<any>> {
+    return this.httpService.get(apiRoute, {
+      params: {
+        slug
+      },
+      headers: {
+        Authorization: `Bearer ${token}`
+      }});
+  }
+
+  /**
+   * Search globally
+   * @param query
+   */
+  public search(apiRoute: string, token: string, query: string): Observable<AxiosResponse<SearchResult[]>> {
+    return this.httpService.get(apiRoute, {
+      params: {
+        query
+      },
+      headers: {
+        Authorization: `Bearer ${token}`
+      }});
+  }
+}
+
+ProfileService.ts
+import { Injectable } from "@nestjs/common";
+import { HttpService } from "@nestjs/axios";
+import { Observable } from "rxjs/Observable";
+import { AxiosResponse } from "axios";
+
+@Injectable()
+export class ProfileService {
+  constructor(private readonly httpService: HttpService) {}
+
+  /**
+   * Get the current logged in user
+   * @param token
+   */
+  public getCurrentUser(apiRoute: string, token: string): Observable<AxiosResponse<UserDto>> {
+    return this.httpService.get(apiRoute, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }});
+  }
+
+  /**
+   * Get a list of articles for the given user
+   * @param username
+   */
+  public getArticles(apiRoute: string, token: string, username: string, params: { limit?: number, offset?: number }): Observable<AxiosResponse<Article[]>> {
+    return this.httpService.get(apiRoute, {
+      params,
+      headers: {
+        Authorization: `Bearer ${token}`
+      }});
+  }
+
+  /**
+   * Get a list of followed tags for the given user
+   */
+  public getTags(apiRoute: string, token: string, username: string): Observable<AxiosResponse<Tag[]>> {
+    return this.httpService.get(apiRoute, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }});
+  }
+
+  /**
+   * Get the current logged in user information
+   */
+  public getUserInfo(apiRoute: string, token: string): Observable<AxiosResponse<User>> {
+    return this.httpService.get(apiRoute, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }});
+  }
+
+  /**
+   * Get a list of followers for the given user
+   * @param username
+   */
+  public getFollowers(apiRoute: string, token: string, username: string, params?: { limit?: number; offset?: number }): Observable<AxiosResponse<User[]>> {
+    return this.httpService.get(apiRoute, {
+      params,
+      headers: {
+        Authorization: `Bearer ${token}`
+      }});
+  }
+
+file_map = match_file_extensions(file_extensions, codebase_structure)
