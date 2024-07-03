@@ -93,8 +93,8 @@ def analyze_file(filepath):
     }
 
     patterns = {
-        'imports': r'^.*(?:import|package|require|include)\s.*$',
-        'classes': r'^.*\bclass\b.*$',
+        'imports': r'^.(?:import|package|require|include)\s.*$',
+        'classes': r'/^.{0,10}(?:class|trait|struct|typedef|package|type)\s\b.*$',
         'functions':r'^(?=.*(?:fn|func|function|def|public|private|final|int|float|char|string|double|long))(?!.*\bclass\b)\s\(.*$'
     }
 
@@ -110,7 +110,7 @@ def analyze_file(filepath):
                 if len(structure[key]) > 0:
                     parts = filepath.split("/Dependancy_Finder/")
                     trimmed_path = parts[1] if len(parts) > 1 else ""
-                    f.write(f"{trimmed_path}:{key} : {str(structure[key])}\n")
+                    f.write(f"{trimmed_path}:{key}-{str(structure[key])}\n")
         except Exception as e:
             logging.error(f"Error writing to output.txt: {str(e)}")
 
