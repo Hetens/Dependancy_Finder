@@ -93,8 +93,8 @@ def analyze_file(filepath):
     }
 
     patterns = {
-        'imports': r'^.(?:import|package|require|include)\s.*$',
-        'classes': r'/^.{0,10}(?:class|trait|struct|typedef|package|type)\s\b.*$',
+        'imports': r'^.*(?:import|package|require|include)\s.*$',
+        'classes': r'^.*\b\sclass\s\b.*$',
         'functions':r'^(?=.*(?:fn|func|function|def|public|private|final|int|float|char|string|double|long))(?!.*\bclass\b)\s\(.*$'
     }
 
