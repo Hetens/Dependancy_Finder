@@ -2,6 +2,7 @@ import os
 import re
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import logging
+import os
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
@@ -94,7 +95,7 @@ def analyze_file(filepath):
     patterns = {
         'imports': r'^.*(?:import|package|require|include)\s.*$',
         'classes': r'^.*\bclass\b.*$',
-        'functions':r'^(?=.*(?:fn|func|function|def|public|private|final))(?!.*\bclass\b).*$'
+        'functions':r'^(?=.*(?:fn|func|function|def|public|private|final|int|float|char|string|double|long))(?!.*\bclass\b)\s\(.*$'
     }
 
     for key, pattern in patterns.items():
@@ -112,6 +113,13 @@ def analyze_file(filepath):
                     f.write(f"{trimmed_path}:{key} : {str(structure[key])}\n")
         except Exception as e:
             logging.error(f"Error writing to output.txt: {str(e)}")
+
+    try:
+        with open('output1.txt','r') as f:
+            output_contents = f.readlines()
+            sorted_output = sorted(output_contents)
+    except Exception as e:
+        logging.error(f"Error reading from output.txt: {str(e)}")
     return structure
 
 def analyze_files_concurrent(file_list):

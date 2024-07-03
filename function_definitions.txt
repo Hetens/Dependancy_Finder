@@ -1,0 +1,39 @@
+func multiply(a int, b int) int {
+    return a * b
+}
+fn subtract(a: i32, b: i32) -> i32 {
+    a - b
+}
+def divide(a, b):
+    return a / b
+function concatenate(str1, str2) {
+    return str1 + str2;
+}
+function getLength(arr: number[]): number {
+    return arr.length;
+}
+int square(int a) {
+    return a * a;
+}
+double area(double radius) {
+    return 3.14159 * radius * radius;
+}
+public boolean isEven(int number) {
+    return number % 2 == 0;
+}
+func greet(name: String) -> String {
+    return "Hello, \(name)!"
+}
+fun toUpperCase(str: String): String {
+    return str.toUpperCase()
+}
+def calculate_area(length, width)
+    length * width
+end
+function is_positive($number) {
+    return $number > 0;
+}
+sub reverse_string {
+    my ($str) = @_;
+    return scalar reverse $str;
+}
