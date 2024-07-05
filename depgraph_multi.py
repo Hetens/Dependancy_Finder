@@ -1,3 +1,4 @@
+import sys
 import os
 import re
 from collections import defaultdict
@@ -6,7 +7,7 @@ import matplotlib.pyplot as plt
 from dotenv import load_dotenv
 from multiprocessing import Pool, cpu_count
 import logging
-from util_multi import list_files, get_file_extensions, match_file_extensions, analyze_files_concurrent
+from util_multi import list_files, get_file_extensions, match_file_extensions, analyze_files_concurrent, write_results_to_csv
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
@@ -54,6 +55,12 @@ def build_dependency_graph(file_map, directory):
     """
     file_to_path = {file: os.path.join(directory, file) for ext, files in file_map.items() for file in files}
     analysis_results = analyze_files_concurrent(file_to_path.values())
+    try:
+        if sys.argv[1] == '-w':
+            logging.info("generating csv file for all outputs")
+            write_results_to_csv(analysis_results, 'analysis_results.csv')
+    except IndexError:
+        pass
     
     with Pool(processes=cpu_count()) as pool:
         results = pool.map(process_file, [(file, filepath, analysis_results) for file, filepath in file_to_path.items()])
@@ -98,8 +105,8 @@ def main():
     file_map = match_file_extensions(file_extensions, codebase_structure)
 
     # Filter file extensions based on relevance
-    relevant = ['h', 'c']
-    file_map = {key: file_map[key] for key in relevant if key in file_map}
+    # relevant = ['h', 'c']
+    # file_map = {key: file_map[key] for key in relevant if key in file_map}
 
     logging.info("Building dependency graph...")
     dependency_graph = build_dependency_graph(file_map, directory)

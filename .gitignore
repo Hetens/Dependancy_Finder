@@ -5,3 +5,5 @@
 ./.vscode
 ./LLM_Pipeline/env
 vram
+/alpha-venv
+output2.txt

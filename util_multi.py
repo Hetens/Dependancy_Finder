@@ -3,7 +3,7 @@ import re
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import logging
 import os
-
+import csv
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 def list_files(directory):
@@ -66,14 +66,14 @@ def match_file_extensions(file_extensions, codebase_structure):
     return file_map
 
 def read_file_with_fallback_encoding(filepath):
-    encodings = ['utf-8', 'iso-8859-1', 'windows-1252', 'ascii']
+    encodings = ['utf-8']#, 'iso-8859-1', 'windows-1252', 'ascii']
     for encoding in encodings:
         try:
             with open(filepath, 'r', encoding=encoding) as file:
                 return file.read()
         except UnicodeDecodeError:
             continue
-    raise ValueError(f"Unable to read file {filepath} with any of the attempted encodings.")
+    #raise ValueError(f"Unable to read file {filepath} with any of the attempted encodings.")
 
 def analyze_file(filepath):
     """
@@ -94,16 +94,16 @@ def analyze_file(filepath):
 
     patterns = {
         'imports': r'^.*(?:import|package|require|include)\s.*$',
-        'classes': r'^.*\b\sclass\s\b.*$',
-        'functions':r'^(?=.*(?:fn|func|function|def|public|private|final|int|float|char|string|double|long))(?!.*\bclass\b)\s\(.*$'
+        'classes': r'\b(public|private|protected)*(\s)*(?:class|type|typedef|impl|struct|trait|use|sub)\s(\b|:|{).*(\s{|\:|\(\w+\))$',
+        'functions':r'\b(?:fn|func|function|def|public|private|final|int|float|char|string|double|long|fun|sub)(?!.*\bclass\b)(\s.+)({|:|\))$'
     }
 
     for key, pattern in patterns.items():
         matches = re.findall(pattern, file_content, re.MULTILINE)
         structure[key] = [
-            match.strip() 
+            match.strip() if isinstance(match, str) else match[0].strip()
             for match in matches 
-            if not match.strip().startswith(('//', '*', '/*'))
+            if not (isinstance(match, str) and match.strip().startswith(('//', '*', '/*')) and match.strip()=='') 
         ]
         try:
             with open('output1.txt', 'a+') as f:
@@ -113,13 +113,6 @@ def analyze_file(filepath):
                     f.write(f"{trimmed_path}:{key}-{str(structure[key])}\n")
         except Exception as e:
             logging.error(f"Error writing to output.txt: {str(e)}")
-
-    try:
-        with open('output1.txt','r') as f:
-            output_contents = f.readlines()
-            sorted_output = sorted(output_contents)
-    except Exception as e:
-        logging.error(f"Error reading from output.txt: {str(e)}")
     return structure
 
 def analyze_files_concurrent(file_list):
@@ -133,3 +126,40 @@ def analyze_files_concurrent(file_list):
             except Exception as exc:
                 logging.error(f'{filepath} generated an exception: {exc}')
     return results
+
+def write_results_to_csv(results, output_file):
+    with open(output_file, 'w', newline='', encoding='utf-8') as csvfile:
+        fieldnames = ['file_path', 'imports', 'functions', 'classes']
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+        
+        writer.writeheader()
+        for filepath, data in results.items():
+            writer.writerow({
+                'file_path': filepath,
+                'imports': ';'.join(data['imports']),
+                'functions': ';'.join(data['functions']),
+                'classes': ';'.join(data['classes'])
+            })
+
+def process_single_file(filepath):
+    try:
+        file_content = read_file_with_fallback_encoding(filepath)
+        if file_content is not None:
+            return filepath, file_content
+    except Exception as e:
+        logging.error(f"Error processing file {filepath}: {str(e)}")
+    return None
+
+def writing_full_file_parallel(file_list, output_file='output2.txt', max_workers=None):
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        future_to_file = {executor.submit(process_single_file, filepath): filepath for filepath in file_list}
+        
+        with open(output_file, 'a+', encoding='utf-8') as f:
+            for future in as_completed(future_to_file):
+                result = future.result()
+                if result:
+                    filepath, file_content = result
+                    try:
+                        f.write(f"{filepath}\n{file_content}\n")
+                    except Exception as e:
+                        logging.error(f"Error writing to {output_file}: {str(e)}")
