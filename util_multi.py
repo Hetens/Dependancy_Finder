@@ -66,7 +66,7 @@ def match_file_extensions(file_extensions, codebase_structure):
     return file_map
 
 def read_file_with_fallback_encoding(filepath):
-    encodings = ['utf-8']#, 'iso-8859-1', 'windows-1252', 'ascii']
+    encodings = ['utf-8', 'iso-8859-1', 'windows-1252', 'ascii']
     for encoding in encodings:
         try:
             with open(filepath, 'r', encoding=encoding) as file:

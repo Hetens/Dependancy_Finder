@@ -1,170 +1,96 @@
-File: apps\api\src\main.ts
-Dependencies:
-  - realworld\apps\documentation\docs\specs\backend-specs\cors.md
-  - realworld\.git\refs\remotes\origin\dependabot\npm_and_yarn\nx\express-17.2.8
-  - realworld\.git\logs\refs\remotes\origin\dependabot\npm_and_yarn\nx\express-17.2.8
-
-File: apps\api\src\app\controllers\article.controller.ts
-Dependencies:
-  - realworld\.git\refs\remotes\origin\dependabot\npm_and_yarn\nx\express-17.2.8
-  - realworld\.git\logs\refs\remotes\origin\dependabot\npm_and_yarn\nx\express-17.2.8
-
-File: apps\api\src\app\controllers\auth.controller.ts
-Dependencies:
-  - realworld\.git\refs\remotes\origin\dependabot\npm_and_yarn\nx\express-17.2.8
-  - realworld\.git\logs\refs\remotes\origin\dependabot\npm_and_yarn\nx\express-17.2.8
-
-File: apps\api\src\app\controllers\profile.controller.ts
-Dependencies:
-  - realworld\.git\refs\remotes\origin\dependabot\npm_and_yarn\nx\express-17.2.8
-  - realworld\.git\logs\refs\remotes\origin\dependabot\npm_and_yarn\nx\express-17.2.8
-
-File: apps\api\src\app\controllers\tag.controller.ts
-Dependencies:
-  - realworld\.git\refs\remotes\origin\dependabot\npm_and_yarn\nx\express-17.2.8
-  - realworld\.git\logs\refs\remotes\origin\dependabot\npm_and_yarn\nx\express-17.2.8
-
-File: apps\api\src\app\routes\routes.ts
-Dependencies:
-  - realworld\.git\refs\remotes\origin\dependabot\npm_and_yarn\nx\express-17.2.8
-  - realworld\.git\logs\refs\remotes\origin\dependabot\npm_and_yarn\nx\express-17.2.8
-
-File: apps\api\src\app\utils\auth.ts
-Dependencies:
-  - realworld\.git\refs\remotes\origin\dependabot\npm_and_yarn\nx\express-17.2.8
-  - realworld\.git\logs\refs\remotes\origin\dependabot\npm_and_yarn\nx\express-17.2.8
-
 File: apps\api-testing-cypress\cypress.config.ts
 Dependencies:
-  - realworld\apps\e2e-testing-cypress\README.md
-  - realworld\apps\api-testing-cypress\src\e2e\profile.cy.ts
-  - realworld\apps\e2e-testing-cypress\project.json
-  - realworld\apps\e2e-testing-cypress\src\e2e\follow.cy.ts
-  - realworld\apps\e2e-testing-cypress\src\e2e\article.cy.ts
-  - realworld\apps\e2e-testing-cypress\src\support\article.util.ts
-  - realworld\apps\e2e-testing-cypress\.eslintrc.json
-  - realworld\apps\api-testing-cypress\tsconfig.json
-  - realworld\apps\api-testing-cypress\src\support\user.util.ts
-  - realworld\apps\api-testing-cypress\src\support\types.ts
-  - realworld\apps\e2e-testing-cypress\src\support\settings.po.ts
-  - realworld\apps\api-testing-cypress\src\e2e\static.cy.ts
-  - realworld\apps\e2e-testing-cypress\src\support\auth.po.ts
   - realworld\apps\e2e-testing-cypress\src\support\article.po.ts
   - realworld\apps\e2e-testing-cypress\src\e2e\feed.cy.ts
-  - realworld\apps\api-testing-cypress\src\e2e\article.cy.ts
-  - realworld\apps\e2e-testing-cypress\cypress.config.ts
-  - realworld\apps\api-testing-cypress\cypress.config.ts
-  - realworld\apps\api-testing-cypress\.eslintrc.json
-  - realworld\apps\e2e-testing-cypress\src\support\commands.ts
-  - realworld\apps\api-testing-cypress\src\support\commands.ts
-  - realworld\apps\api-testing-cypress\README.md
-  - realworld\apps\api-testing-cypress\src\support\article.util.ts
-  - realworld\apps\api-testing-cypress\src\support\e2e.ts
-  - realworld\apps\e2e-testing-cypress\src\fixtures\example.json
-  - realworld\apps\e2e-testing-cypress\src\support\e2e.ts
-  - realworld\apps\api-testing-cypress\src\e2e\tag.cy.ts
-  - realworld\apps\e2e-testing-cypress\src\e2e\settings.cy.ts
-  - realworld\apps\e2e-testing-cypress\src\e2e\layout.cy.ts
-  - realworld\apps\e2e-testing-cypress\src\e2e\auth.cy.ts
   - realworld\apps\e2e-testing-cypress\src\support\feed.po.ts
-  - realworld\apps\e2e-testing-cypress\tsconfig.json
-  - realworld\apps\api-testing-cypress\CODING_STANDARDS.md
+  - realworld\apps\e2e-testing-cypress\src\support\settings.po.ts
+  - realworld\apps\api-testing-cypress\src\support\commands.ts
+  - realworld\apps\e2e-testing-cypress\src\support\e2e.ts
+  - realworld\apps\api-testing-cypress\src\support\user.util.ts
+  - realworld\apps\e2e-testing-cypress\src\e2e\follow.cy.ts
+  - realworld\apps\api-testing-cypress\src\support\types.ts
+  - realworld\apps\e2e-testing-cypress\src\support\auth.po.ts
+  - realworld\apps\e2e-testing-cypress\src\support\commands.ts
+  - realworld\apps\e2e-testing-cypress\src\e2e\auth.cy.ts
+  - realworld\apps\api-testing-cypress\src\e2e\tag.cy.ts
+  - realworld\apps\e2e-testing-cypress\src\support\article.util.ts
+  - realworld\apps\e2e-testing-cypress\src\e2e\layout.cy.ts
+  - realworld\apps\api-testing-cypress\src\e2e\article.cy.ts
+  - realworld\apps\api-testing-cypress\src\e2e\profile.cy.ts
   - realworld\apps\api-testing-cypress\src\e2e\user.cy.ts
-  - realworld\apps\api-testing-cypress\project.json
+  - realworld\apps\e2e-testing-cypress\src\e2e\article.cy.ts
+  - realworld\apps\e2e-testing-cypress\cypress.config.ts
+  - realworld\apps\api-testing-cypress\src\support\e2e.ts
+  - realworld\apps\e2e-testing-cypress\src\e2e\settings.cy.ts
+  - realworld\apps\api-testing-cypress\src\support\article.util.ts
+  - realworld\apps\api-testing-cypress\src\e2e\static.cy.ts
+  - realworld\apps\api-testing-cypress\cypress.config.ts
 
 File: apps\api-testing-playwright\src\utils\article.util.ts
 Dependencies:
-  - realworld\apps\conduit\demo-e2e\playwright.config.ts
-  - realworld\apps\api-testing-playwright\src\utils\user.util.ts
-  - realworld\apps\api-testing-playwright\src\utils\account.fixture.ts
-  - realworld\apps\api-testing-playwright\.eslintrc.json
-  - realworld\apps\api-testing-playwright\src\app.spec.ts
-  - realworld\apps\api-testing-playwright\src\tag.spec.ts
-  - realworld\apps\api-testing-playwright\README.md
-  - realworld\apps\api-testing-playwright\src\profile.spec.ts
-  - realworld\apps\api-testing-playwright\project.json
-  - realworld\apps\api-testing-playwright\src\favorite.spec.ts
   - realworld\apps\api-testing-playwright\src\user.spec.ts
-  - realworld\apps\api-testing-playwright\src\models\user.model.ts
   - realworld\apps\api-testing-playwright\src\utils\article.util.ts
+  - realworld\apps\api-testing-playwright\src\favorite.spec.ts
   - realworld\playwright.config.base.ts
-  - realworld\apps\api-testing-playwright\tsconfig.json
-  - realworld\apps\api-testing-playwright\tsconfig.e2e.json
   - realworld\apps\api-testing-playwright\playwright.config.ts
+  - realworld\apps\api-testing-playwright\src\tag.spec.ts
+  - realworld\apps\api-testing-playwright\src\models\user.model.ts
+  - realworld\apps\api-testing-playwright\src\utils\user.util.ts
+  - realworld\apps\api-testing-playwright\src\profile.spec.ts
+  - realworld\apps\conduit\demo-e2e\playwright.config.ts
+  - realworld\apps\api-testing-playwright\src\app.spec.ts
+  - realworld\apps\api-testing-playwright\src\utils\account.fixture.ts
 
 File: apps\api-testing-playwright\src\utils\user.util.ts
 Dependencies:
-  - realworld\apps\conduit\demo-e2e\playwright.config.ts
-  - realworld\apps\api-testing-playwright\src\utils\user.util.ts
-  - realworld\apps\api-testing-playwright\src\utils\account.fixture.ts
-  - realworld\apps\api-testing-playwright\.eslintrc.json
-  - realworld\apps\api-testing-playwright\src\app.spec.ts
-  - realworld\apps\api-testing-playwright\src\tag.spec.ts
-  - realworld\apps\api-testing-playwright\README.md
-  - realworld\apps\api-testing-playwright\src\profile.spec.ts
-  - realworld\apps\api-testing-playwright\project.json
-  - realworld\apps\api-testing-playwright\src\favorite.spec.ts
   - realworld\apps\api-testing-playwright\src\user.spec.ts
-  - realworld\apps\api-testing-playwright\src\models\user.model.ts
   - realworld\apps\api-testing-playwright\src\utils\article.util.ts
+  - realworld\apps\api-testing-playwright\src\favorite.spec.ts
   - realworld\playwright.config.base.ts
-  - realworld\apps\api-testing-playwright\tsconfig.json
-  - realworld\apps\api-testing-playwright\tsconfig.e2e.json
   - realworld\apps\api-testing-playwright\playwright.config.ts
+  - realworld\apps\api-testing-playwright\src\tag.spec.ts
+  - realworld\apps\api-testing-playwright\src\models\user.model.ts
+  - realworld\apps\api-testing-playwright\src\utils\user.util.ts
+  - realworld\apps\api-testing-playwright\src\profile.spec.ts
+  - realworld\apps\conduit\demo-e2e\playwright.config.ts
+  - realworld\apps\api-testing-playwright\src\app.spec.ts
+  - realworld\apps\api-testing-playwright\src\utils\account.fixture.ts
 
 File: apps\demo\vite.config.ts
 Dependencies:
-  - realworld\.git\refs\remotes\origin\dependabot\npm_and_yarn\vite-5.0.12
-  - realworld\.git\logs\refs\remotes\origin\dependabot\npm_and_yarn\vite-5.0.12
-  - realworld\.git\logs\refs\remotes\origin\dependabot\npm_and_yarn\vite-4.5.2
   - realworld\apps\demo\vite.config.ts
-  - realworld\.git\refs\remotes\origin\dependabot\npm_and_yarn\vite-4.5.2
   - realworld\apps\storybook\vite.config.ts
 
 File: apps\e2e-testing-cypress\cypress.config.ts
 Dependencies:
-  - realworld\apps\e2e-testing-cypress\README.md
-  - realworld\apps\api-testing-cypress\src\e2e\profile.cy.ts
-  - realworld\apps\e2e-testing-cypress\project.json
-  - realworld\apps\e2e-testing-cypress\src\e2e\follow.cy.ts
-  - realworld\apps\e2e-testing-cypress\src\e2e\article.cy.ts
-  - realworld\apps\e2e-testing-cypress\src\support\article.util.ts
-  - realworld\apps\e2e-testing-cypress\.eslintrc.json
-  - realworld\apps\api-testing-cypress\tsconfig.json
-  - realworld\apps\api-testing-cypress\src\support\user.util.ts
-  - realworld\apps\api-testing-cypress\src\support\types.ts
-  - realworld\apps\api-testing-cypress\src\e2e\static.cy.ts
-  - realworld\apps\e2e-testing-cypress\src\support\settings.po.ts
-  - realworld\apps\e2e-testing-cypress\src\support\auth.po.ts
   - realworld\apps\e2e-testing-cypress\src\support\article.po.ts
   - realworld\apps\e2e-testing-cypress\src\e2e\feed.cy.ts
-  - realworld\apps\api-testing-cypress\src\e2e\article.cy.ts
-  - realworld\apps\api-testing-cypress\project.json
-  - realworld\apps\e2e-testing-cypress\cypress.config.ts
-  - realworld\apps\api-testing-cypress\cypress.config.ts
-  - realworld\apps\api-testing-cypress\.eslintrc.json
-  - realworld\apps\e2e-testing-cypress\src\support\commands.ts
-  - realworld\apps\api-testing-cypress\src\support\commands.ts
-  - realworld\apps\api-testing-cypress\README.md
-  - realworld\apps\api-testing-cypress\src\support\e2e.ts
-  - realworld\apps\api-testing-cypress\src\support\article.util.ts
-  - realworld\apps\api-testing-cypress\src\e2e\tag.cy.ts
-  - realworld\apps\e2e-testing-cypress\src\fixtures\example.json
-  - realworld\apps\e2e-testing-cypress\src\support\e2e.ts
-  - realworld\apps\e2e-testing-cypress\src\e2e\layout.cy.ts
-  - realworld\apps\e2e-testing-cypress\src\e2e\auth.cy.ts
   - realworld\apps\e2e-testing-cypress\src\support\feed.po.ts
-  - realworld\apps\e2e-testing-cypress\tsconfig.json
-  - realworld\apps\api-testing-cypress\CODING_STANDARDS.md
+  - realworld\apps\e2e-testing-cypress\src\support\settings.po.ts
+  - realworld\apps\api-testing-cypress\src\support\commands.ts
+  - realworld\apps\e2e-testing-cypress\src\support\e2e.ts
+  - realworld\apps\api-testing-cypress\src\support\user.util.ts
+  - realworld\apps\e2e-testing-cypress\src\e2e\follow.cy.ts
+  - realworld\apps\api-testing-cypress\src\support\types.ts
+  - realworld\apps\e2e-testing-cypress\src\support\auth.po.ts
+  - realworld\apps\e2e-testing-cypress\src\support\commands.ts
+  - realworld\apps\e2e-testing-cypress\src\e2e\auth.cy.ts
+  - realworld\apps\api-testing-cypress\src\e2e\tag.cy.ts
+  - realworld\apps\e2e-testing-cypress\src\support\article.util.ts
+  - realworld\apps\e2e-testing-cypress\src\e2e\layout.cy.ts
+  - realworld\apps\api-testing-cypress\src\e2e\article.cy.ts
+  - realworld\apps\api-testing-cypress\src\e2e\profile.cy.ts
   - realworld\apps\api-testing-cypress\src\e2e\user.cy.ts
+  - realworld\apps\e2e-testing-cypress\src\e2e\article.cy.ts
+  - realworld\apps\e2e-testing-cypress\cypress.config.ts
+  - realworld\apps\api-testing-cypress\src\support\e2e.ts
   - realworld\apps\e2e-testing-cypress\src\e2e\settings.cy.ts
+  - realworld\apps\api-testing-cypress\src\support\article.util.ts
+  - realworld\apps\api-testing-cypress\src\e2e\static.cy.ts
+  - realworld\apps\api-testing-cypress\cypress.config.ts
 
 File: apps\storybook\vite.config.ts
 Dependencies:
-  - realworld\.git\refs\remotes\origin\dependabot\npm_and_yarn\vite-5.0.12
-  - realworld\.git\logs\refs\remotes\origin\dependabot\npm_and_yarn\vite-5.0.12
-  - realworld\.git\refs\remotes\origin\dependabot\npm_and_yarn\vite-4.5.2
   - realworld\apps\demo\vite.config.ts
-  - realworld\.git\logs\refs\remotes\origin\dependabot\npm_and_yarn\vite-4.5.2
   - realworld\apps\storybook\vite.config.ts
 

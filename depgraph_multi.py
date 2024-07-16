@@ -105,8 +105,8 @@ def main():
     file_map = match_file_extensions(file_extensions, codebase_structure)
 
     # Filter file extensions based on relevance
-    # relevant = ['h', 'c']
-    # file_map = {key: file_map[key] for key in relevant if key in file_map}
+    relevant = ['js','ts']
+    file_map = {key: file_map[key] for key in relevant if key in file_map}
 
     logging.info("Building dependency graph...")
     dependency_graph = build_dependency_graph(file_map, directory)

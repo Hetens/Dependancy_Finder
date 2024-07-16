@@ -1,0 +1,13 @@
+openai
+httpx 
+langchain 
+langchain-community 
+langchain-openai 
+langgraph 
+langchainhub 
+langchain-text-splitters 
+langchain-experimental 
+tf-keras 
+tqdm 
+pynvml 
+chromadb
