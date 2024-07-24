@@ -1,5 +1,5 @@
-/morelang
-/realworld
+morelang
+realworld
 .env
 ./__pycache__   
 ./.vscode
@@ -8,3 +8,5 @@ vram
 /alpha-venv
 output2.txt
 output-file.json
+output_dir
+output.txt
