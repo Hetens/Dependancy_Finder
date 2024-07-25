@@ -229,8 +229,8 @@ function highlightFilter(filter) {
         <style type="text/css">
 
              #mynetwork {
-                 width: 100%;
-                 height: 900px;
+                 width: 1200px;
+                 height: 1200px;
                  background-color: #ffffff;
                  border: 1px solid lightgray;
                  position: relative;
@@ -239,12 +239,6 @@ function highlightFilter(filter) {
 
              
 
-             
-             #config {
-                 float: left;
-                 width: 400px;
-                 height: 600px;
-             }
              
 
              
@@ -267,105 +261,87 @@ function highlightFilter(filter) {
                             >
                                 <option selected>Select a Node by ID</option>
                                 
-                                    <option value="buffer">buffer</option>
-                                
-                                    <option value="length">length</option>
-                                
-                                    <option value="setmem64">setmem64</option>
-                                
-                                    <option value="uint64">uint64</option>
-                                
-                                    <option value="uintn">uintn</option>
-                                
-                                    <option value="value">value</option>
-                                
-                                    <option value="void">void</option>
+                                    <option value="allocatezeropool">allocatezeropool</option>
                                 
                                     <option value="cdb">cdb</option>
                                 
-                                    <option value="commandpacket">commandpacket</option>
-                                
-                                    <option value="efi_scsi_op_length_ten">efi_scsi_op_length_ten</option>
-                                
-                                    <option value="efi_scsi_op_read16">efi_scsi_op_read16</option>
-                                
-                                    <option value="efi_scsi_op_write10">efi_scsi_op_write10</option>
-                                
-                                    <option value="executescsicommand">executescsicommand</option>
-                                
-                                    <option value="outdatabuffer">outdatabuffer</option>
-                                
-                                    <option value="outtransferlength">outtransferlength</option>
-                                
-                                    <option value="scsiio">scsiio</option>
-                                
-                                    <option value="sectorsize">sectorsize</option>
-                                
-                                    <option value="sensedata">sensedata</option>
-                                
-                                    <option value="sensedatalength">sensedatalength</option>
-                                
-                                    <option value="startlba">startlba</option>
-                                
-                                    <option value="timeout">timeout</option>
-                                
                                     <option value="context">context</option>
-                                
-                                    <option value="efi_scsi_op_length_sixteen">efi_scsi_op_length_sixteen</option>
-                                
-                                    <option value="databuffer">databuffer</option>
-                                
-                                    <option value="datalength">datalength</option>
-                                
-                                    <option value="efi_scsi_io_protocol">efi_scsi_io_protocol</option>
-                                
-                                    <option value="buffer alignment requirement">buffer alignment requirement</option>
-                                
-                                    <option value="efi_status">efi_status</option>
-                                
-                                    <option value="hostadapterstatus">hostadapterstatus</option>
-                                
-                                    <option value="scsiread16commandex">scsiread16commandex</option>
-                                
-                                    <option value="uint8">uint8</option>
-                                
-                                    <option value="efi_scsi_op_write16">efi_scsi_op_write16</option>
                                 
                                     <option value="event">event</option>
                                 
+                                    <option value="scsilibnotify">scsilibnotify</option>
+                                
+                                    <option value="buffer">buffer</option>
+                                
+                                    <option value="setmem64">setmem64</option>
+                                
+                                    <option value="testsafeint32touintn">testsafeint32touintn</option>
+                                
+                                    <option value="commandpacket">commandpacket</option>
+                                
+                                    <option value="createevent">createevent</option>
+                                
+                                    <option value="executescsicommand">executescsicommand</option>
+                                
+                                    <option value="scsiio">scsiio</option>
+                                
                                     <option value="selfevent">selfevent</option>
                                 
-                                    <option value="uint32">uint32</option>
+                                    <option value="startlba">startlba</option>
                                 
-                                    <option value="scsiwrite16commandex">scsiwrite16commandex</option>
+                                    <option value="the context of the commandpacket">the context of the commandpacket</option>
                                 
-                                    <option value="targetstatus">targetstatus</option>
+                                    <option value="efi_out_of_resources">efi_out_of_resources</option>
                                 
-                                    <option value="operand">operand</option>
+                                    <option value="hostadapterstatus">hostadapterstatus</option>
                                 
-                                    <option value="result">result</option>
-                                
-                                    <option value="safeintntouint32">safeintntouint32</option>
-                                
-                                    <option value="safeuintntointn">safeuintntointn</option>
-                                
-                                    <option value="safeuintntouint32">safeuintntouint32</option>
+                                    <option value="sensedatalength">sensedatalength</option>
                                 
                                     <option value="status">status</option>
                                 
-                                    <option value="safeint64touintn">safeint64touintn</option>
+                                    <option value="targetstatus">targetstatus</option>
                                 
-                                    <option value="safeintntouintn">safeintntouintn</option>
+                                    <option value="databuffer">databuffer</option>
                                 
-                                    <option value="safeintnadd">safeintnadd</option>
+                                    <option value="efi_event">efi_event</option>
                                 
-                                    <option value="safeuintnadd">safeuintnadd</option>
+                                    <option value="efi_scsi_io_protocol">efi_scsi_io_protocol</option>
                                 
-                                    <option value="safeuint64tointn">safeuint64tointn</option>
+                                    <option value="efi_status">efi_status</option>
                                 
-                                    <option value="testsafeintnadd">testsafeintnadd</option>
+                                    <option value="uint64">uint64</option>
                                 
-                                    <option value="testsafeuint64tointn">testsafeuint64tointn</option>
+                                    <option value="void">void</option>
+                                
+                                    <option value="uintn">uintn</option>
+                                
+                                    <option value="unit_test_context">unit_test_context</option>
+                                
+                                    <option value="unit_test_status">unit_test_status</option>
+                                
+                                    <option value="sensedata">sensedata</option>
+                                
+                                    <option value="the status of host adapter">the status of host adapter</option>
+                                
+                                    <option value="int64">int64</option>
+                                
+                                    <option value="length">length</option>
+                                
+                                    <option value="operand">operand</option>
+                                
+                                    <option value="safeint32touintn">safeint32touintn</option>
+                                
+                                    <option value="scsi io protocol to use">scsi io protocol to use</option>
+                                
+                                    <option value="a pointer to output sense data">a pointer to output sense data</option>
+                                
+                                    <option value="the length of output sense data">the length of output sense data</option>
+                                
+                                    <option value="value">value</option>
+                                
+                                    <option value="timeout">timeout</option>
+                                
+                                    <option value="the length of timeout period">the length of timeout period</option>
                                 
                             </select>
                         </div>
@@ -380,8 +356,6 @@ function highlightFilter(filter) {
         </div>
 
         
-        
-            <div id="config"></div>
         
 
         <script type="text/javascript">
@@ -421,8 +395,8 @@ function highlightFilter(filter) {
                   
 
                   // parsing and collecting nodes and edges from the python
-                  nodes = new vis.DataSet([{"group": 1, "id": "buffer", "label": "buffer", "shape": "dot", "size": 6}, {"group": 1, "id": "length", "label": "length", "shape": "dot", "size": 6}, {"group": 1, "id": "setmem64", "label": "setmem64", "shape": "dot", "size": 6}, {"group": 1, "id": "uint64", "label": "uint64", "shape": "dot", "size": 14}, {"group": 1, "id": "uintn", "label": "uintn", "shape": "dot", "size": 6}, {"group": 1, "id": "value", "label": "value", "shape": "dot", "size": 6}, {"group": 1, "id": "void", "label": "void", "shape": "dot", "size": 11}, {"group": 2, "id": "cdb", "label": "cdb", "shape": "dot", "size": 13}, {"group": 2, "id": "commandpacket", "label": "commandpacket", "shape": "dot", "size": 13}, {"group": 2, "id": "efi_scsi_op_length_ten", "label": "efi_scsi_op_length_ten", "shape": "dot", "size": 3}, {"group": 2, "id": "efi_scsi_op_read16", "label": "efi_scsi_op_read16", "shape": "dot", "size": 3}, {"group": 2, "id": "efi_scsi_op_write10", "label": "efi_scsi_op_write10", "shape": "dot", "size": 7}, {"group": 2, "id": "executescsicommand", "label": "executescsicommand", "shape": "dot", "size": 3}, {"group": 2, "id": "outdatabuffer", "label": "outdatabuffer", "shape": "dot", "size": 3}, {"group": 2, "id": "outtransferlength", "label": "outtransferlength", "shape": "dot", "size": 3}, {"group": 2, "id": "scsiio", "label": "scsiio", "shape": "dot", "size": 14}, {"group": 2, "id": "sectorsize", "label": "sectorsize", "shape": "dot", "size": 6}, {"group": 2, "id": "sensedata", "label": "sensedata", "shape": "dot", "size": 12}, {"group": 2, "id": "sensedatalength", "label": "sensedatalength", "shape": "dot", "size": 10}, {"group": 2, "id": "startlba", "label": "startlba", "shape": "dot", "size": 6}, {"group": 2, "id": "timeout", "label": "timeout", "shape": "dot", "size": 10}, {"group": 3, "id": "context", "label": "context", "shape": "dot", "size": 1}, {"group": 3, "id": "efi_scsi_op_length_sixteen", "label": "efi_scsi_op_length_sixteen", "shape": "dot", "size": 9}, {"group": 2, "id": "databuffer", "label": "databuffer", "shape": "dot", "size": 3}, {"group": 2, "id": "datalength", "label": "datalength", "shape": "dot", "size": 3}, {"group": 1, "id": "efi_scsi_io_protocol", "label": "efi_scsi_io_protocol", "shape": "dot", "size": 11}, {"group": 1, "id": "buffer alignment requirement", "label": "buffer alignment requirement", "shape": "dot", "size": 1}, {"group": 1, "id": "efi_status", "label": "efi_status", "shape": "dot", "size": 6}, {"group": 2, "id": "hostadapterstatus", "label": "hostadapterstatus", "shape": "dot", "size": 7}, {"group": 1, "id": "scsiread16commandex", "label": "scsiread16commandex", "shape": "dot", "size": 4}, {"group": 2, "id": "uint8", "label": "uint8", "shape": "dot", "size": 10}, {"group": 3, "id": "efi_scsi_op_write16", "label": "efi_scsi_op_write16", "shape": "dot", "size": 1}, {"group": 3, "id": "event", "label": "event", "shape": "dot", "size": 2}, {"group": 3, "id": "selfevent", "label": "selfevent", "shape": "dot", "size": 2}, {"group": 3, "id": "uint32", "label": "uint32", "shape": "dot", "size": 2}, {"group": 1, "id": "scsiwrite16commandex", "label": "scsiwrite16commandex", "shape": "dot", "size": 2}, {"group": 2, "id": "targetstatus", "label": "targetstatus", "shape": "dot", "size": 1}, {"group": 4, "id": "operand", "label": "operand", "shape": "dot", "size": 5}, {"group": 4, "id": "result", "label": "result", "shape": "dot", "size": 5}, {"group": 4, "id": "safeintntouint32", "label": "safeintntouint32", "shape": "dot", "size": 3}, {"group": 4, "id": "safeuintntointn", "label": "safeuintntointn", "shape": "dot", "size": 3}, {"group": 4, "id": "safeuintntouint32", "label": "safeuintntouint32", "shape": "dot", "size": 3}, {"group": 4, "id": "status", "label": "status", "shape": "dot", "size": 5}, {"group": 5, "id": "safeint64touintn", "label": "safeint64touintn", "shape": "dot", "size": 1}, {"group": 5, "id": "safeintntouintn", "label": "safeintntouintn", "shape": "dot", "size": 6}, {"group": 5, "id": "safeintnadd", "label": "safeintnadd", "shape": "dot", "size": 2}, {"group": 5, "id": "safeuintnadd", "label": "safeuintnadd", "shape": "dot", "size": 2}, {"group": 5, "id": "safeuint64tointn", "label": "safeuint64tointn", "shape": "dot", "size": 1}, {"group": 5, "id": "testsafeintnadd", "label": "testsafeintnadd", "shape": "dot", "size": 2}, {"group": 5, "id": "testsafeuint64tointn", "label": "testsafeuint64tointn", "shape": "dot", "size": 2}]);
-                  edges = new vis.DataSet([{"from": "buffer", "title": "contextual proximity", "to": "length", "width": 1}, {"from": "buffer", "title": "uses,contextual proximity", "to": "setmem64", "width": 1}, {"from": "buffer", "title": "contextual proximity", "to": "uint64", "width": 1}, {"from": "buffer", "title": "contextual proximity", "to": "uintn", "width": 1}, {"from": "buffer", "title": "contextual proximity", "to": "value", "width": 1}, {"from": "buffer", "title": "points to,contextual proximity", "to": "void", "width": 1}, {"from": "cdb", "title": "contextual proximity", "to": "commandpacket", "width": 1}, {"from": "cdb", "title": "contextual proximity", "to": "efi_scsi_op_length_ten", "width": 1}, {"from": "cdb", "title": "A CDB for Read (16) command,contextual proximity", "to": "efi_scsi_op_read16", "width": 1}, {"from": "cdb", "title": "Has value,contextual proximity", "to": "efi_scsi_op_write10", "width": 1}, {"from": "cdb", "title": "contextual proximity", "to": "executescsicommand", "width": 1}, {"from": "cdb", "title": "contextual proximity", "to": "outdatabuffer", "width": 1}, {"from": "cdb", "title": "contextual proximity", "to": "outtransferlength", "width": 1}, {"from": "cdb", "title": "contextual proximity", "to": "scsiio", "width": 1}, {"from": "cdb", "title": "SectorSize is used to construct the CDB for this SCSI command,contextual proximity", "to": "sectorsize", "width": 1}, {"from": "cdb", "title": "contextual proximity", "to": "sensedata", "width": 1}, {"from": "cdb", "title": "contextual proximity", "to": "sensedatalength", "width": 1}, {"from": "cdb", "title": "StartLba is used to construct the CDB for this SCSI command,contextual proximity", "to": "startlba", "width": 1}, {"from": "cdb", "title": "contextual proximity", "to": "timeout", "width": 1}, {"from": "commandpacket", "title": "contextual proximity", "to": "efi_scsi_op_length_ten", "width": 1}, {"from": "commandpacket", "title": "contextual proximity", "to": "efi_scsi_op_read16", "width": 1}, {"from": "commandpacket", "title": "contextual proximity", "to": "efi_scsi_op_write10", "width": 1}, {"from": "commandpacket", "title": "contextual proximity", "to": "executescsicommand", "width": 1}, {"from": "commandpacket", "title": "contextual proximity", "to": "outdatabuffer", "width": 1}, {"from": "commandpacket", "title": "contextual proximity", "to": "outtransferlength", "width": 1}, {"from": "commandpacket", "title": "ScsiIo is used to create CommandPacket,contextual proximity", "to": "scsiio", "width": 1}, {"from": "commandpacket", "title": "contextual proximity", "to": "sectorsize", "width": 1}, {"from": "commandpacket", "title": "contextual proximity", "to": "sensedata", "width": 1}, {"from": "commandpacket", "title": "contextual proximity", "to": "sensedatalength", "width": 1}, {"from": "commandpacket", "title": "contextual proximity", "to": "startlba", "width": 1}, {"from": "commandpacket", "title": "contextual proximity", "to": "timeout", "width": 1}, {"from": "context", "title": "contextual proximity", "to": "efi_scsi_op_length_sixteen", "width": 1}, {"from": "databuffer", "title": "contextual proximity", "to": "datalength", "width": 1}, {"from": "databuffer", "title": "contextual proximity", "to": "sensedata", "width": 1}, {"from": "databuffer", "title": "contextual proximity", "to": "sensedatalength", "width": 1}, {"from": "datalength", "title": "contextual proximity", "to": "sensedata", "width": 1}, {"from": "datalength", "title": "contextual proximity", "to": "sensedatalength", "width": 1}, {"from": "efi_scsi_io_protocol", "title": "EFI_SCSI_IO_PROTOCOL defines the buffer alignment requirement.", "to": "buffer alignment requirement", "width": 1}, {"from": "efi_scsi_io_protocol", "title": "contextual proximity", "to": "efi_status", "width": 1}, {"from": "efi_scsi_io_protocol", "title": "contextual proximity", "to": "hostadapterstatus", "width": 1}, {"from": "efi_scsi_io_protocol", "title": "contextual proximity", "to": "scsiio", "width": 1}, {"from": "efi_scsi_io_protocol", "title": "The function ScsiRead16CommandEx takes EFI_SCSI_IO_PROTOCOL as an input.,contextual proximity", "to": "scsiread16commandex", "width": 1}, {"from": "efi_scsi_io_protocol", "title": "contextual proximity", "to": "sensedata", "width": 1}, {"from": "efi_scsi_io_protocol", "title": "contextual proximity", "to": "sensedatalength", "width": 1}, {"from": "efi_scsi_io_protocol", "title": "contextual proximity", "to": "timeout", "width": 1}, {"from": "efi_scsi_io_protocol", "title": "contextual proximity", "to": "uint64", "width": 1}, {"from": "efi_scsi_io_protocol", "title": "contextual proximity", "to": "uint8", "width": 1}, {"from": "efi_scsi_io_protocol", "title": "contextual proximity", "to": "void", "width": 1}, {"from": "efi_scsi_op_length_sixteen", "title": "is a type of,contextual proximity", "to": "efi_scsi_op_write16", "width": 1}, {"from": "efi_scsi_op_length_sixteen", "title": "contextual proximity", "to": "event", "width": 1}, {"from": "efi_scsi_op_length_sixteen", "title": "uses,contextual proximity", "to": "scsiio", "width": 1}, {"from": "efi_scsi_op_length_sixteen", "title": "contextual proximity", "to": "sectorsize", "width": 1}, {"from": "efi_scsi_op_length_sixteen", "title": "contextual proximity", "to": "selfevent", "width": 1}, {"from": "efi_scsi_op_length_sixteen", "title": "contextual proximity", "to": "startlba", "width": 1}, {"from": "efi_scsi_op_length_sixteen", "title": "contextual proximity", "to": "uint32", "width": 1}, {"from": "efi_scsi_op_length_sixteen", "title": "contextual proximity", "to": "uint64", "width": 1}, {"from": "efi_scsi_op_length_ten", "title": "contextual proximity", "to": "efi_scsi_op_write10", "width": 1}, {"from": "efi_scsi_op_read16", "title": "contextual proximity", "to": "scsiio", "width": 1}, {"from": "efi_scsi_op_write10", "title": "contextual proximity", "to": "outdatabuffer", "width": 1}, {"from": "efi_scsi_op_write10", "title": "contextual proximity", "to": "outtransferlength", "width": 1}, {"from": "efi_scsi_op_write10", "title": "contextual proximity", "to": "sensedata", "width": 1}, {"from": "efi_scsi_op_write10", "title": "contextual proximity", "to": "timeout", "width": 1}, {"from": "efi_status", "title": "The function ScsiRead16CommandEx returns an instance of EFI_STATUS.,contextual proximity", "to": "scsiread16commandex", "width": 1}, {"from": "efi_status", "title": "returns an instance of this type", "to": "scsiwrite16commandex", "width": 1}, {"from": "efi_status", "title": "contextual proximity", "to": "uint64", "width": 1}, {"from": "efi_status", "title": "contextual proximity", "to": "uint8", "width": 1}, {"from": "efi_status", "title": "contextual proximity", "to": "void", "width": 1}, {"from": "event", "title": "is a type of", "to": "selfevent", "width": 1}, {"from": "executescsicommand", "title": "ExecuteScsiCommand is executed on ScsiIo,contextual proximity", "to": "scsiio", "width": 1}, {"from": "hostadapterstatus", "title": "contextual proximity", "to": "scsiio", "width": 1}, {"from": "hostadapterstatus", "title": "contextual proximity", "to": "sensedata", "width": 1}, {"from": "hostadapterstatus", "title": "contextual proximity", "to": "sensedatalength", "width": 1}, {"from": "hostadapterstatus", "title": "HostAdapterStatus and TargetStatus are both status indicators.", "to": "targetstatus", "width": 1}, {"from": "hostadapterstatus", "title": "contextual proximity", "to": "timeout", "width": 1}, {"from": "hostadapterstatus", "title": "represents a status of this type,contextual proximity", "to": "uint8", "width": 1}, {"from": "length", "title": "uses,contextual proximity", "to": "setmem64", "width": 1}, {"from": "length", "title": "contextual proximity", "to": "uint64", "width": 1}, {"from": "length", "title": "contextual proximity", "to": "uintn", "width": 1}, {"from": "length", "title": "contextual proximity", "to": "value", "width": 1}, {"from": "length", "title": "contextual proximity", "to": "void", "width": 1}, {"from": "operand", "title": "contextual proximity", "to": "result", "width": 1}, {"from": "operand", "title": "contextual proximity", "to": "safeintntouint32", "width": 1}, {"from": "operand", "title": "contextual proximity", "to": "safeuintntointn", "width": 1}, {"from": "operand", "title": "contextual proximity", "to": "safeuintntouint32", "width": 1}, {"from": "operand", "title": "contextual proximity", "to": "status", "width": 1}, {"from": "result", "title": "contextual proximity", "to": "safeintntouint32", "width": 1}, {"from": "result", "title": "contextual proximity", "to": "safeuintntointn", "width": 1}, {"from": "result", "title": "contextual proximity", "to": "safeuintntouint32", "width": 1}, {"from": "result", "title": "contextual proximity", "to": "status", "width": 1}, {"from": "safeint64touintn", "title": "contextual proximity", "to": "safeintntouintn", "width": 1}, {"from": "safeintnadd", "title": "contextual proximity", "to": "safeintntouintn", "width": 1}, {"from": "safeintnadd", "title": "These two functions are related in terms of performing arithmetic operations", "to": "safeuintnadd", "width": 1}, {"from": "safeintntouint32", "title": "contextual proximity", "to": "status", "width": 1}, {"from": "safeintntouintn", "title": "These two functions are related in terms of converting integer types,contextual proximity", "to": "safeuint64tointn", "width": 1}, {"from": "safeintntouintn", "title": "contextual proximity", "to": "safeuintnadd", "width": 1}, {"from": "safeintntouintn", "title": "contextual proximity", "to": "testsafeintnadd", "width": 1}, {"from": "safeintntouintn", "title": "contextual proximity", "to": "testsafeuint64tointn", "width": 1}, {"from": "safeuintntointn", "title": "contextual proximity", "to": "status", "width": 1}, {"from": "safeuintntouint32", "title": "contextual proximity", "to": "status", "width": 1}, {"from": "scsiio", "title": "contextual proximity", "to": "sectorsize", "width": 1}, {"from": "scsiio", "title": "contextual proximity", "to": "sensedata", "width": 1}, {"from": "scsiio", "title": "contextual proximity", "to": "sensedatalength", "width": 1}, {"from": "scsiio", "title": "contextual proximity", "to": "startlba", "width": 1}, {"from": "scsiio", "title": "contextual proximity", "to": "timeout", "width": 1}, {"from": "scsiio", "title": "contextual proximity", "to": "uint64", "width": 1}, {"from": "scsiio", "title": "contextual proximity", "to": "uint8", "width": 1}, {"from": "scsiread16commandex", "title": "contextual proximity", "to": "uint64", "width": 1}, {"from": "scsiread16commandex", "title": "contextual proximity", "to": "void", "width": 1}, {"from": "scsiwrite16commandex", "title": "contextual proximity", "to": "uint8", "width": 1}, {"from": "sectorsize", "title": "contextual proximity", "to": "startlba", "width": 1}, {"from": "sectorsize", "title": "is a type of", "to": "uint32", "width": 1}, {"from": "sensedata", "title": "contextual proximity", "to": "sensedatalength", "width": 1}, {"from": "sensedata", "title": "contextual proximity", "to": "timeout", "width": 1}, {"from": "sensedata", "title": "contextual proximity", "to": "uint8", "width": 1}, {"from": "sensedata", "title": "represents a pointer to a buffer of this type", "to": "void", "width": 1}, {"from": "sensedatalength", "title": "contextual proximity", "to": "timeout", "width": 1}, {"from": "sensedatalength", "title": "represents the length of this type,contextual proximity", "to": "uint8", "width": 1}, {"from": "setmem64", "title": "contextual proximity", "to": "uint64", "width": 1}, {"from": "setmem64", "title": "contextual proximity", "to": "uintn", "width": 1}, {"from": "setmem64", "title": "contextual proximity", "to": "value", "width": 1}, {"from": "setmem64", "title": "contextual proximity", "to": "void", "width": 1}, {"from": "startlba", "title": "is a type of", "to": "uint64", "width": 1}, {"from": "testsafeintnadd", "title": "These two test functions are related in terms of testing integer type conversions and arithmetic operations", "to": "testsafeuint64tointn", "width": 1}, {"from": "timeout", "title": "contextual proximity", "to": "uint8", "width": 1}, {"from": "timeout", "title": "represents a duration of this type", "to": "uint64", "width": 1}, {"from": "uint64", "title": "contextual proximity", "to": "uint8", "width": 1}, {"from": "uint64", "title": "contextual proximity", "to": "uintn", "width": 1}, {"from": "uint64", "title": "type of,contextual proximity", "to": "value", "width": 1}, {"from": "uint64", "title": "contextual proximity", "to": "void", "width": 1}, {"from": "uint8", "title": "contextual proximity", "to": "void", "width": 1}, {"from": "uintn", "title": "contextual proximity", "to": "value", "width": 1}, {"from": "uintn", "title": "contextual proximity", "to": "void", "width": 1}, {"from": "value", "title": "contextual proximity", "to": "void", "width": 1}]);
+                  nodes = new vis.DataSet([{"group": 2, "id": "allocatezeropool", "label": "allocatezeropool", "shape": "dot", "size": 4}, {"group": 2, "id": "cdb", "label": "cdb", "shape": "dot", "size": 11}, {"group": 2, "id": "context", "label": "context", "shape": "dot", "size": 12}, {"group": 2, "id": "event", "label": "event", "shape": "dot", "size": 7}, {"group": 2, "id": "scsilibnotify", "label": "scsilibnotify", "shape": "dot", "size": 7}, {"group": 3, "id": "buffer", "label": "buffer", "shape": "dot", "size": 2}, {"group": 3, "id": "setmem64", "label": "setmem64", "shape": "dot", "size": 6}, {"group": 3, "id": "testsafeint32touintn", "label": "testsafeint32touintn", "shape": "dot", "size": 6}, {"group": 2, "id": "commandpacket", "label": "commandpacket", "shape": "dot", "size": 6}, {"group": 2, "id": "createevent", "label": "createevent", "shape": "dot", "size": 2}, {"group": 2, "id": "executescsicommand", "label": "executescsicommand", "shape": "dot", "size": 2}, {"group": 2, "id": "scsiio", "label": "scsiio", "shape": "dot", "size": 15}, {"group": 2, "id": "selfevent", "label": "selfevent", "shape": "dot", "size": 7}, {"group": 2, "id": "startlba", "label": "startlba", "shape": "dot", "size": 1}, {"group": 2, "id": "the context of the commandpacket", "label": "the context of the commandpacket", "shape": "dot", "size": 1}, {"group": 2, "id": "efi_out_of_resources", "label": "efi_out_of_resources", "shape": "dot", "size": 2}, {"group": 1, "id": "hostadapterstatus", "label": "hostadapterstatus", "shape": "dot", "size": 6}, {"group": 1, "id": "sensedatalength", "label": "sensedatalength", "shape": "dot", "size": 6}, {"group": 2, "id": "status", "label": "status", "shape": "dot", "size": 2}, {"group": 1, "id": "targetstatus", "label": "targetstatus", "shape": "dot", "size": 4}, {"group": 2, "id": "databuffer", "label": "databuffer", "shape": "dot", "size": 1}, {"group": 2, "id": "efi_event", "label": "efi_event", "shape": "dot", "size": 1}, {"group": 4, "id": "efi_scsi_io_protocol", "label": "efi_scsi_io_protocol", "shape": "dot", "size": 4}, {"group": 4, "id": "efi_status", "label": "efi_status", "shape": "dot", "size": 5}, {"group": 4, "id": "uint64", "label": "uint64", "shape": "dot", "size": 3}, {"group": 4, "id": "void", "label": "void", "shape": "dot", "size": 1}, {"group": 4, "id": "uintn", "label": "uintn", "shape": "dot", "size": 3}, {"group": 4, "id": "unit_test_context", "label": "unit_test_context", "shape": "dot", "size": 3}, {"group": 4, "id": "unit_test_status", "label": "unit_test_status", "shape": "dot", "size": 5}, {"group": 1, "id": "sensedata", "label": "sensedata", "shape": "dot", "size": 4}, {"group": 1, "id": "the status of host adapter", "label": "the status of host adapter", "shape": "dot", "size": 1}, {"group": 4, "id": "int64", "label": "int64", "shape": "dot", "size": 1}, {"group": 3, "id": "length", "label": "length", "shape": "dot", "size": 2}, {"group": 3, "id": "operand", "label": "operand", "shape": "dot", "size": 2}, {"group": 3, "id": "safeint32touintn", "label": "safeint32touintn", "shape": "dot", "size": 2}, {"group": 2, "id": "scsi io protocol to use", "label": "scsi io protocol to use", "shape": "dot", "size": 1}, {"group": 1, "id": "a pointer to output sense data", "label": "a pointer to output sense data", "shape": "dot", "size": 1}, {"group": 1, "id": "the length of output sense data", "label": "the length of output sense data", "shape": "dot", "size": 1}, {"group": 3, "id": "value", "label": "value", "shape": "dot", "size": 2}, {"group": 5, "id": "timeout", "label": "timeout", "shape": "dot", "size": 1}, {"group": 5, "id": "the length of timeout period", "label": "the length of timeout period", "shape": "dot", "size": 1}]);
+                  edges = new vis.DataSet([{"from": "allocatezeropool", "title": "Cdb is the result of AllocateZeroPool,Cdb is assigned the output of AllocateZeroPool,contextual proximity", "to": "cdb", "width": 2.5}, {"from": "allocatezeropool", "title": "contextual proximity", "to": "context", "width": 1.0}, {"from": "allocatezeropool", "title": "contextual proximity", "to": "event", "width": 0.5}, {"from": "allocatezeropool", "title": "contextual proximity", "to": "scsilibnotify", "width": 0.5}, {"from": "buffer", "title": "SetMem64 returns a pointer to the input buffer,contextual proximity", "to": "setmem64", "width": 1.75}, {"from": "buffer", "title": "contextual proximity", "to": "testsafeint32touintn", "width": 0.5}, {"from": "cdb", "title": "contextual proximity", "to": "commandpacket", "width": 0.75}, {"from": "cdb", "title": "contextual proximity", "to": "context", "width": 1.5}, {"from": "cdb", "title": "contextual proximity", "to": "createevent", "width": 0.5}, {"from": "cdb", "title": "contextual proximity", "to": "event", "width": 0.5}, {"from": "cdb", "title": "contextual proximity", "to": "executescsicommand", "width": 0.5}, {"from": "cdb", "title": "contextual proximity", "to": "scsiio", "width": 0.75}, {"from": "cdb", "title": "contextual proximity", "to": "scsilibnotify", "width": 0.5}, {"from": "cdb", "title": "contextual proximity", "to": "selfevent", "width": 0.75}, {"from": "cdb", "title": "StartLba is used to fill Cdb for Read(16) Command,contextual proximity", "to": "startlba", "width": 1.5}, {"from": "cdb", "title": "contextual proximity", "to": "the context of the commandpacket", "width": 0.5}, {"from": "commandpacket", "title": "Context contains CommandPacket,contextual proximity", "to": "context", "width": 1.5}, {"from": "commandpacket", "title": "contextual proximity", "to": "event", "width": 0.5}, {"from": "commandpacket", "title": "ScsiIo takes CommandPacket as an argument,contextual proximity", "to": "scsiio", "width": 1.5}, {"from": "commandpacket", "title": "contextual proximity", "to": "scsilibnotify", "width": 0.5}, {"from": "commandpacket", "title": "contextual proximity", "to": "selfevent", "width": 0.5}, {"from": "context", "title": "contextual proximity", "to": "efi_out_of_resources", "width": 0.75}, {"from": "context", "title": "contextual proximity", "to": "event", "width": 0.5}, {"from": "context", "title": "contextual proximity", "to": "hostadapterstatus", "width": 0.75}, {"from": "context", "title": "contextual proximity", "to": "scsiio", "width": 0.5}, {"from": "context", "title": "ScsiLibNotify is passed Context as an argument,contextual proximity", "to": "scsilibnotify", "width": 1.5}, {"from": "context", "title": "contextual proximity", "to": "selfevent", "width": 0.5}, {"from": "context", "title": "contextual proximity", "to": "sensedatalength", "width": 0.75}, {"from": "context", "title": "contextual proximity", "to": "status", "width": 0.75}, {"from": "context", "title": "contextual proximity", "to": "targetstatus", "width": 0.75}, {"from": "createevent", "title": "SelfEvent is created by CreateEvent", "to": "selfevent", "width": 1.0}, {"from": "databuffer", "title": "ScsiIo is a parameter for DataBuffer,contextual proximity", "to": "scsiio", "width": 2.25}, {"from": "efi_event", "title": "ScsiIo and EFI_EVENT are parameters of the ScsiRead16CommandEx function,contextual proximity", "to": "scsiio", "width": 2.0}, {"from": "efi_out_of_resources", "title": "Status is set to EFI_OUT_OF_RESOURCES when Cdb is NULL", "to": "status", "width": 1.0}, {"from": "efi_scsi_io_protocol", "title": "contextual proximity", "to": "efi_status", "width": 0.75}, {"from": "efi_scsi_io_protocol", "title": "contextual proximity", "to": "scsiio", "width": 1.0}, {"from": "efi_scsi_io_protocol", "title": "contextual proximity", "to": "uint64", "width": 0.75}, {"from": "efi_scsi_io_protocol", "title": "contextual proximity", "to": "void", "width": 0.75}, {"from": "efi_status", "title": "contextual proximity", "to": "uint64", "width": 0.5}, {"from": "efi_status", "title": "contextual proximity", "to": "uintn", "width": 0.5}, {"from": "efi_status", "title": "contextual proximity", "to": "unit_test_context", "width": 0.5}, {"from": "efi_status", "title": "UNIT_TEST_STATUS is assigned the value of EFI_STATUS,UNIT_TEST_STATUS functions return EFI_STATUS values,contextual proximity", "to": "unit_test_status", "width": 4.0}, {"from": "event", "title": "contextual proximity", "to": "scsiio", "width": 0.5}, {"from": "event", "title": "ScsiLibNotify is passed Event as an argument,contextual proximity", "to": "scsilibnotify", "width": 2.0}, {"from": "event", "title": "Event is used to create SelfEvent,contextual proximity", "to": "selfevent", "width": 1.5}, {"from": "executescsicommand", "title": "ScsiIo is used in ExecuteScsiCommand", "to": "scsiio", "width": 1.0}, {"from": "hostadapterstatus", "title": "ScsiIo is a parameter for HostAdapterStatus,contextual proximity", "to": "scsiio", "width": 2.5}, {"from": "hostadapterstatus", "title": "contextual proximity", "to": "sensedata", "width": 0.5}, {"from": "hostadapterstatus", "title": "contextual proximity", "to": "sensedatalength", "width": 0.75}, {"from": "hostadapterstatus", "title": "contextual proximity", "to": "targetstatus", "width": 0.5}, {"from": "hostadapterstatus", "title": "HostAdapterStatus is the status of Host Adapter", "to": "the status of host adapter", "width": 1.0}, {"from": "int64", "title": "UNIT_TEST_STATUS is assigned the value of INT64,contextual proximity", "to": "unit_test_status", "width": 2.0}, {"from": "length", "title": "SetMem64 requires a non-zero length to write data,contextual proximity", "to": "setmem64", "width": 1.75}, {"from": "length", "title": "contextual proximity", "to": "testsafeint32touintn", "width": 0.5}, {"from": "operand", "title": "contextual proximity", "to": "setmem64", "width": 0.75}, {"from": "operand", "title": "TestSafeInt32ToUintn performs a SafeInt32ToUintn operation on the Operand,contextual proximity", "to": "testsafeint32touintn", "width": 1.5}, {"from": "safeint32touintn", "title": "contextual proximity", "to": "setmem64", "width": 0.75}, {"from": "safeint32touintn", "title": "TestSafeInt32ToUintn tests the SafeInt32ToUintn function,contextual proximity", "to": "testsafeint32touintn", "width": 1.5}, {"from": "scsiio", "title": "ScsiIo refers to the SCSI IO Protocol to use", "to": "scsi io protocol to use", "width": 1.0}, {"from": "scsiio", "title": "contextual proximity", "to": "scsilibnotify", "width": 0.5}, {"from": "scsiio", "title": "contextual proximity", "to": "selfevent", "width": 0.5}, {"from": "scsiio", "title": "contextual proximity", "to": "sensedata", "width": 2.5}, {"from": "scsiio", "title": "contextual proximity", "to": "sensedatalength", "width": 2.5}, {"from": "scsiio", "title": "contextual proximity", "to": "targetstatus", "width": 1.25}, {"from": "scsilibnotify", "title": "contextual proximity", "to": "selfevent", "width": 0.5}, {"from": "sensedata", "title": "SenseData is a pointer to output sense data", "to": "a pointer to output sense data", "width": 1.0}, {"from": "sensedata", "title": "contextual proximity", "to": "sensedatalength", "width": 0.75}, {"from": "sensedatalength", "title": "contextual proximity", "to": "targetstatus", "width": 0.5}, {"from": "sensedatalength", "title": "SenseDataLength is the length of output sense data", "to": "the length of output sense data", "width": 1.0}, {"from": "setmem64", "title": "contextual proximity", "to": "testsafeint32touintn", "width": 1.5}, {"from": "setmem64", "title": "contextual proximity", "to": "value", "width": 0.75}, {"from": "testsafeint32touintn", "title": "contextual proximity", "to": "value", "width": 0.5}, {"from": "timeout", "title": "Timeout is the length of timeout period", "to": "the length of timeout period", "width": 1.0}, {"from": "uint64", "title": "UNIT_TEST_STATUS functions take UINT64 as an input parameter,contextual proximity", "to": "unit_test_status", "width": 2.0}, {"from": "uintn", "title": "contextual proximity", "to": "unit_test_context", "width": 0.5}, {"from": "uintn", "title": "UNIT_TEST_STATUS is assigned the value of UINTN,UNIT_TEST_STATUS functions take UINTN as an input parameter,contextual proximity", "to": "unit_test_status", "width": 4.0}, {"from": "unit_test_context", "title": "contextual proximity", "to": "unit_test_status", "width": 2.0}]);
 
                   nodeColors = {};
                   allNodes = nodes.get({ returnType: "Object" });
@@ -435,10 +409,7 @@ function highlightFilter(filter) {
 
                   var options = {
     "configure": {
-        "enabled": true,
-        "filter": [
-            "physics"
-        ]
+        "enabled": false
     },
     "edges": {
         "color": {
@@ -456,15 +427,6 @@ function highlightFilter(filter) {
     },
     "physics": {
         "enabled": true,
-        "forceAtlas2Based": {
-            "avoidOverlap": 0,
-            "centralGravity": 0.015,
-            "damping": 0.4,
-            "gravitationalConstant": -31,
-            "springConstant": 0.08,
-            "springLength": 100
-        },
-        "solver": "forceAtlas2Based",
         "stabilization": {
             "enabled": true,
             "fit": true,
@@ -478,10 +440,6 @@ function highlightFilter(filter) {
                   
 
 
-                  
-                  // if this network requires displaying the configure window,
-                  // put it in its div
-                  options.configure["container"] = document.getElementById("config");
                   
 
                   network = new vis.Network(container, data, options);
