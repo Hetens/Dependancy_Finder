@@ -13,7 +13,7 @@ from langchain_groq import ChatGroq
 import httpx
 import os
 
-os.environ["GROQ_API_KEY"]  ="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"
+os.environ["GROQ_API_KEY"]  =str(os.getenv("GROQ_API_KEY"))
 
 http_client = httpx.Client(verify=False)
 llm = ChatGroq(
@@ -27,7 +27,7 @@ logging.basicConfig(level=logging.INFO)
 
 # Load the CSV file
 try:
-    df = pd.read_csv('updated_graph.csv')
+    df = pd.read_csv('./output_dir/updated_graph.csv')
 except Exception as e:
     print(f"Error loading CSV file: {e}")
     df = pd.DataFrame()  # Create an empty DataFrame if file loading fails

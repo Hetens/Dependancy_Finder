@@ -8,7 +8,7 @@ from langchain_groq import ChatGroq
 import httpx
 from tqdm import tqdm
 
-os.environ["GROQ_API_KEY"] =os.getenv("GROQ_API_KEY")
+os.environ["GROQ_API_KEY"] =str(os.getenv("GROQ_API_KEY"))
 # Your existing setup code
 http_client = httpx.Client(verify=False)
 llm = ChatGroq(
