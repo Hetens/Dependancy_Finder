@@ -1,0 +1,444 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script>function neighbourhoodHighlight(params) {
+  // console.log("in nieghbourhoodhighlight");
+  allNodes = nodes.get({ returnType: "Object" });
+  // originalNodes = JSON.parse(JSON.stringify(allNodes));
+  // if something is selected:
+  if (params.nodes.length > 0) {
+    highlightActive = true;
+    var i, j;
+    var selectedNode = params.nodes[0];
+    var degrees = 2;
+
+    // mark all nodes as hard to read.
+    for (let nodeId in allNodes) {
+      // nodeColors[nodeId] = allNodes[nodeId].color;
+      allNodes[nodeId].color = "rgba(200,200,200,0.5)";
+      if (allNodes[nodeId].hiddenLabel === undefined) {
+        allNodes[nodeId].hiddenLabel = allNodes[nodeId].label;
+        allNodes[nodeId].label = undefined;
+      }
+    }
+    var connectedNodes = network.getConnectedNodes(selectedNode);
+    var allConnectedNodes = [];
+
+    // get the second degree nodes
+    for (i = 1; i < degrees; i++) {
+      for (j = 0; j < connectedNodes.length; j++) {
+        allConnectedNodes = allConnectedNodes.concat(
+          network.getConnectedNodes(connectedNodes[j])
+        );
+      }
+    }
+
+    // all second degree nodes get a different color and their label back
+    for (i = 0; i < allConnectedNodes.length; i++) {
+      // allNodes[allConnectedNodes[i]].color = "pink";
+      allNodes[allConnectedNodes[i]].color = "rgba(150,150,150,0.75)";
+      if (allNodes[allConnectedNodes[i]].hiddenLabel !== undefined) {
+        allNodes[allConnectedNodes[i]].label =
+          allNodes[allConnectedNodes[i]].hiddenLabel;
+        allNodes[allConnectedNodes[i]].hiddenLabel = undefined;
+      }
+    }
+
+    // all first degree nodes get their own color and their label back
+    for (i = 0; i < connectedNodes.length; i++) {
+      // allNodes[connectedNodes[i]].color = undefined;
+      allNodes[connectedNodes[i]].color = nodeColors[connectedNodes[i]];
+      if (allNodes[connectedNodes[i]].hiddenLabel !== undefined) {
+        allNodes[connectedNodes[i]].label =
+          allNodes[connectedNodes[i]].hiddenLabel;
+        allNodes[connectedNodes[i]].hiddenLabel = undefined;
+      }
+    }
+
+    // the main node gets its own color and its label back.
+    // allNodes[selectedNode].color = undefined;
+    allNodes[selectedNode].color = nodeColors[selectedNode];
+    if (allNodes[selectedNode].hiddenLabel !== undefined) {
+      allNodes[selectedNode].label = allNodes[selectedNode].hiddenLabel;
+      allNodes[selectedNode].hiddenLabel = undefined;
+    }
+  } else if (highlightActive === true) {
+    // console.log("highlightActive was true");
+    // reset all nodes
+    for (let nodeId in allNodes) {
+      // allNodes[nodeId].color = "purple";
+      allNodes[nodeId].color = nodeColors[nodeId];
+      // delete allNodes[nodeId].color;
+      if (allNodes[nodeId].hiddenLabel !== undefined) {
+        allNodes[nodeId].label = allNodes[nodeId].hiddenLabel;
+        allNodes[nodeId].hiddenLabel = undefined;
+      }
+    }
+    highlightActive = false;
+  }
+
+  // transform the object into an array
+  var updateArray = [];
+  if (params.nodes.length > 0) {
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        // console.log(allNodes[nodeId]);
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  } else {
+    // console.log("Nothing was selected");
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        // console.log(allNodes[nodeId]);
+        // allNodes[nodeId].color = {};
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  }
+}
+
+function filterHighlight(params) {
+  allNodes = nodes.get({ returnType: "Object" });
+  // if something is selected:
+  if (params.nodes.length > 0) {
+    filterActive = true;
+    let selectedNodes = params.nodes;
+
+    // hiding all nodes and saving the label
+    for (let nodeId in allNodes) {
+      allNodes[nodeId].hidden = true;
+      if (allNodes[nodeId].savedLabel === undefined) {
+        allNodes[nodeId].savedLabel = allNodes[nodeId].label;
+        allNodes[nodeId].label = undefined;
+      }
+    }
+
+    for (let i=0; i < selectedNodes.length; i++) {
+      allNodes[selectedNodes[i]].hidden = false;
+      if (allNodes[selectedNodes[i]].savedLabel !== undefined) {
+        allNodes[selectedNodes[i]].label = allNodes[selectedNodes[i]].savedLabel;
+        allNodes[selectedNodes[i]].savedLabel = undefined;
+      }
+    }
+
+  } else if (filterActive === true) {
+    // reset all nodes
+    for (let nodeId in allNodes) {
+      allNodes[nodeId].hidden = false;
+      if (allNodes[nodeId].savedLabel !== undefined) {
+        allNodes[nodeId].label = allNodes[nodeId].savedLabel;
+        allNodes[nodeId].savedLabel = undefined;
+      }
+    }
+    filterActive = false;
+  }
+
+  // transform the object into an array
+  var updateArray = [];
+  if (params.nodes.length > 0) {
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  } else {
+    for (let nodeId in allNodes) {
+      if (allNodes.hasOwnProperty(nodeId)) {
+        updateArray.push(allNodes[nodeId]);
+      }
+    }
+    nodes.update(updateArray);
+  }
+}
+
+function selectNode(nodes) {
+  network.selectNodes(nodes);
+  neighbourhoodHighlight({ nodes: nodes });
+  return nodes;
+}
+
+function selectNodes(nodes) {
+  network.selectNodes(nodes);
+  filterHighlight({nodes: nodes});
+  return nodes;
+}
+
+function highlightFilter(filter) {
+  let selectedNodes = []
+  let selectedProp = filter['property']
+  if (filter['item'] === 'node') {
+    let allNodes = nodes.get({ returnType: "Object" });
+    for (let nodeId in allNodes) {
+      if (allNodes[nodeId][selectedProp] && filter['value'].includes((allNodes[nodeId][selectedProp]).toString())) {
+        selectedNodes.push(nodeId)
+      }
+    }
+  }
+  else if (filter['item'] === 'edge'){
+    let allEdges = edges.get({returnType: 'object'});
+    // check if the selected property exists for selected edge and select the nodes connected to the edge
+    for (let edge in allEdges) {
+      if (allEdges[edge][selectedProp] && filter['value'].includes((allEdges[edge][selectedProp]).toString())) {
+        selectedNodes.push(allEdges[edge]['from'])
+        selectedNodes.push(allEdges[edge]['to'])
+      }
+    }
+  }
+  selectNodes(selectedNodes)
+}</script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+            
+            
+            
+            
+            
+
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 1200px;
+                 height: 1200px;
+                 background-color: #ffffff;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+             #loadingBar {
+                 position:absolute;
+                 top:0px;
+                 left:0px;
+                 width: 1200px;
+                 height: 1200px;
+                 background-color:rgba(200,200,200,0.8);
+                 -webkit-transition: all 0.5s ease;
+                 -moz-transition: all 0.5s ease;
+                 -ms-transition: all 0.5s ease;
+                 -o-transition: all 0.5s ease;
+                 transition: all 0.5s ease;
+                 opacity:1;
+             }
+
+             #bar {
+                 position:absolute;
+                 top:0px;
+                 left:0px;
+                 width:20px;
+                 height:20px;
+                 margin:auto auto auto auto;
+                 border-radius:11px;
+                 border:2px solid rgba(30,30,30,0.05);
+                 background: rgb(0, 173, 246); /* Old browsers */
+                 box-shadow: 2px 0px 4px rgba(0,0,0,0.4);
+             }
+
+             #border {
+                 position:absolute;
+                 top:10px;
+                 left:10px;
+                 width:500px;
+                 height:23px;
+                 margin:auto auto auto auto;
+                 box-shadow: 0px 0px 4px rgba(0,0,0,0.2);
+                 border-radius:10px;
+             }
+
+             #text {
+                 position:absolute;
+                 top:8px;
+                 left:530px;
+                 width:30px;
+                 height:50px;
+                 margin:auto auto auto auto;
+                 font-size:22px;
+                 color: #000000;
+             }
+
+             div.outerBorder {
+                 position:relative;
+                 top:400px;
+                 width:600px;
+                 height:44px;
+                 margin:auto auto auto auto;
+                 border:8px solid rgba(0,0,0,0.1);
+                 background: rgb(252,252,252); /* Old browsers */
+                 background: -moz-linear-gradient(top,  rgba(252,252,252,1) 0%, rgba(237,237,237,1) 100%); /* FF3.6+ */
+                 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(252,252,252,1)), color-stop(100%,rgba(237,237,237,1))); /* Chrome,Safari4+ */
+                 background: -webkit-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* Chrome10+,Safari5.1+ */
+                 background: -o-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* Opera 11.10+ */
+                 background: -ms-linear-gradient(top,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* IE10+ */
+                 background: linear-gradient(to bottom,  rgba(252,252,252,1) 0%,rgba(237,237,237,1) 100%); /* W3C */
+                 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
+                 border-radius:72px;
+                 box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+             }
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+            <div id="loadingBar">
+              <div class="outerBorder">
+                <div id="text">0%</div>
+                <div id="border">
+                  <div id="bar"></div>
+                </div>
+              </div>
+            </div>
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"group": 1, "id": "algorithm", "label": "algorithm", "physics": true, "shape": "dot", "size": 3, "x": 195.2372335820289, "y": 33.271689271600486}, {"group": 1, "id": "capability", "label": "capability", "physics": true, "shape": "dot", "size": 2, "x": -187.57336761542584, "y": 11.751014331448348}, {"group": 1, "id": "capability flags", "label": "capability flags", "physics": true, "shape": "dot", "size": 2, "x": 131.80448961949403, "y": -133.64648823901305}, {"group": 3, "id": "case_id", "label": "case_id", "physics": true, "shape": "dot", "size": 2, "x": 183.76747116330247, "y": 78.66200284215203}, {"group": 1, "id": "certificate", "label": "certificate", "physics": true, "shape": "dot", "size": 1, "x": -102.85259899240317, "y": -148.7932034875407}, {"group": 4, "id": "certificate chain", "label": "certificate chain", "physics": true, "shape": "dot", "size": 2, "x": -197.1557017299669, "y": -1.1797562536908783}, {"group": 1, "id": "certificate_chain", "label": "certificate_chain", "physics": true, "shape": "dot", "size": 1, "x": 161.6605748863373, "y": -120.35615087679832}, {"group": 1, "id": "challenge", "label": "challenge", "physics": true, "shape": "dot", "size": 3, "x": -193.54237081052668, "y": 26.400784631312767}, {"group": 1, "id": "challenge auth", "label": "challenge auth", "physics": true, "shape": "dot", "size": 1, "x": 189.89064081728378, "y": -34.10490777717455}, {"group": 1, "id": "challenge auth message", "label": "challenge auth message", "physics": true, "shape": "dot", "size": 1, "x": 30.662265886542222, "y": -190.54185701720496}, {"group": 5, "id": "challenge message", "label": "challenge message", "physics": true, "shape": "dot", "size": 1, "x": 44.59514246039976, "y": -179.0264114590034}, {"group": 1, "id": "challenge_auth", "label": "challenge_auth", "physics": true, "shape": "dot", "size": 1, "x": 181.17663089519283, "y": -90.88120319451598}, {"group": 1, "id": "chunk response", "label": "chunk response", "physics": true, "shape": "dot", "size": 1, "x": -191.06120088340035, "y": -27.20280310309265}, {"group": 1, "id": "connection", "label": "connection", "physics": true, "shape": "dot", "size": 2, "x": -14.762109840261534, "y": 189.22384301501597}, {"group": 1, "id": "connection info", "label": "connection info", "physics": true, "shape": "dot", "size": 5, "x": 24.509647306914033, "y": -76.18347980740278}, {"group": 1, "id": "connection state", "label": "connection state", "physics": true, "shape": "dot", "size": 1, "x": -139.5970176546791, "y": -122.41126495912229}, {"group": 1, "id": "connection_info", "label": "connection_info", "physics": true, "shape": "dot", "size": 10, "x": -12.00013238402092, "y": 59.85448607825866}, {"group": 1, "id": "connection_state", "label": "connection_state", "physics": true, "shape": "dot", "size": 1, "x": -111.84251752130369, "y": -162.28949306185828}, {"group": 7, "id": "digest", "label": "digest", "physics": true, "shape": "dot", "size": 2, "x": -45.66013014780144, "y": -188.54652893335697}, {"group": 1, "id": "digest response", "label": "digest response", "physics": true, "shape": "dot", "size": 1, "x": -46.501324937633626, "y": 186.2692566822684}, {"group": 1, "id": "encapsulated request response", "label": "encapsulated request response", "physics": true, "shape": "dot", "size": 1, "x": 146.94616167888498, "y": -121.0961008763898}, {"group": 1, "id": "error", "label": "error", "physics": true, "shape": "dot", "size": 1, "x": 151.31284378947714, "y": 134.94222916594677}, {"group": 1, "id": "error message", "label": "error message", "physics": true, "shape": "dot", "size": 1, "x": 144.07518660246623, "y": 89.06511670554482}, {"group": 1, "id": "error response", "label": "error response", "physics": true, "shape": "dot", "size": 1, "x": 129.44498083731816, "y": -153.28207119745548}, {"group": 5, "id": "get_capabilities message", "label": "get_capabilities message", "physics": true, "shape": "dot", "size": 1, "x": -184.16050587725428, "y": 82.80613230925489}, {"group": 1, "id": "key update", "label": "key update", "physics": true, "shape": "dot", "size": 1, "x": 193.90299583097556, "y": -49.32571248842464}, {"group": 1, "id": "key_update", "label": "key_update", "physics": true, "shape": "dot", "size": 2, "x": -0.7649672614604047, "y": 185.31020053544594}, {"group": 3, "id": "libspdm", "label": "libspdm", "physics": true, "shape": "dot", "size": 2, "x": 149.35436615919298, "y": -152.57527111479862}, {"group": 3, "id": "libspdm_challenge", "label": "libspdm_challenge", "physics": true, "shape": "dot", "size": 2, "x": -163.0752885761922, "y": 119.57231648732946}, {"group": 3, "id": "libspdm_challenge_ex", "label": "libspdm_challenge_ex", "physics": true, "shape": "dot", "size": 2, "x": 33.533208527818374, "y": 168.11922657529146}, {"group": 3, "id": "libspdm_context", "label": "libspdm_context", "physics": true, "shape": "dot", "size": 6, "x": 58.84375122856338, "y": 82.63998202236988}, {"group": 1, "id": "libspdm_context_t", "label": "libspdm_context_t", "physics": true, "shape": "dot", "size": 3, "x": -181.28034674510278, "y": -89.36002774472045}, {"group": 7, "id": "libspdm_copy_mem", "label": "libspdm_copy_mem", "physics": true, "shape": "dot", "size": 2, "x": 96.13883882423285, "y": 156.134866838229}, {"group": 2, "id": "libspdm_dump_hex_str", "label": "libspdm_dump_hex_str", "physics": true, "shape": "dot", "size": 1, "x": -118.22732861228897, "y": 148.823573415619}, {"group": 3, "id": "libspdm_get_certificate_request3", "label": "libspdm_get_certificate_request3", "physics": true, "shape": "dot", "size": 1, "x": -16.886450829680065, "y": -195.2976161857901}, {"group": 3, "id": "libspdm_get_encap_response_certificate", "label": "libspdm_get_encap_response_certificate", "physics": true, "shape": "dot", "size": 1, "x": -158.3502209142518, "y": 59.72769334387914}, {"group": 3, "id": "libspdm_get_encap_response_challenge_auth", "label": "libspdm_get_encap_response_challenge_auth", "physics": true, "shape": "dot", "size": 1, "x": 115.37509599223176, "y": 146.8389259421037}, {"group": 3, "id": "libspdm_get_encap_response_key_update", "label": "libspdm_get_encap_response_key_update", "physics": true, "shape": "dot", "size": 1, "x": 12.85018325894773, "y": 185.1229514951577}, {"group": 9, "id": "libspdm_get_measurement", "label": "libspdm_get_measurement", "physics": true, "shape": "dot", "size": 1, "x": -190.36120260408578, "y": 48.23041396163165}, {"group": 8, "id": "libspdm_read_input_file", "label": "libspdm_read_input_file", "physics": true, "shape": "dot", "size": 1, "x": -183.61701282134783, "y": -40.5262724649164}, {"group": 3, "id": "libspdm_read_responder_public_certificate_chain", "label": "libspdm_read_responder_public_certificate_chain", "physics": true, "shape": "dot", "size": 2, "x": -63.97722866164679, "y": -74.49925332965611}, {"group": 6, "id": "libspdm_read_responder_public_key", "label": "libspdm_read_responder_public_key", "physics": true, "shape": "dot", "size": 1, "x": 0.31293605445225287, "y": -167.81118024476075}, {"group": 12, "id": "libspdm_requester_challenge_test_main", "label": "libspdm_requester_challenge_test_main", "physics": true, "shape": "dot", "size": 1, "x": -165.33912293655558, "y": 81.92197046712549}, {"group": 3, "id": "libspdm_requester_challenge_test_receive_message", "label": "libspdm_requester_challenge_test_receive_message", "physics": true, "shape": "dot", "size": 1, "x": 28.251226044944666, "y": 189.418152231664}, {"group": 3, "id": "libspdm_requester_challenge_test_send_message", "label": "libspdm_requester_challenge_test_send_message", "physics": true, "shape": "dot", "size": 1, "x": 46.793403086230924, "y": 194.34669058289106}, {"group": 13, "id": "libspdm_requester_encap_certificate_test_main", "label": "libspdm_requester_encap_certificate_test_main", "physics": true, "shape": "dot", "size": 1, "x": -32.14223513059768, "y": -199.99999999999997}, {"group": 7, "id": "libspdm_requester_encap_challenge_auth", "label": "libspdm_requester_encap_challenge_auth", "physics": true, "shape": "dot", "size": 1, "x": -104.74379082388666, "y": 118.74470032277465}, {"group": 14, "id": "libspdm_requester_encap_digests_test_main", "label": "libspdm_requester_encap_digests_test_main", "physics": true, "shape": "dot", "size": 1, "x": 166.7798494571701, "y": 83.21783563784408}, {"group": 15, "id": "libspdm_requester_encap_key_update_test_main", "label": "libspdm_requester_encap_key_update_test_main", "physics": true, "shape": "dot", "size": 1, "x": -95.15221728395277, "y": 172.50267725092002}, {"group": 10, "id": "libspdm_requester_encap_request_test_send_message", "label": "libspdm_requester_encap_request_test_send_message", "physics": true, "shape": "dot", "size": 1, "x": 180.87235169036165, "y": -20.5799313522746}, {"group": 3, "id": "libspdm_reset_message_b", "label": "libspdm_reset_message_b", "physics": true, "shape": "dot", "size": 1, "x": 182.25382720355148, "y": 62.93637426507692}, {"group": 16, "id": "libspdm_responder_dispatch_message", "label": "libspdm_responder_dispatch_message", "physics": true, "shape": "dot", "size": 1, "x": 171.22846294732625, "y": -73.70505792989059}, {"group": 17, "id": "libspdm_set_standard_key_update_test_secrets", "label": "libspdm_set_standard_key_update_test_secrets", "physics": true, "shape": "dot", "size": 1, "x": 131.2707872502583, "y": 140.75315866718512}, {"group": 11, "id": "libspdm_test_common_context_data_case1", "label": "libspdm_test_common_context_data_case1", "physics": true, "shape": "dot", "size": 1, "x": 193.60712440156638, "y": -13.200654301296247}, {"group": 3, "id": "libspdm_test_context", "label": "libspdm_test_context", "physics": true, "shape": "dot", "size": 4, "x": 159.33383760621197, "y": 116.44825717850726}, {"group": 3, "id": "libspdm_test_requester_challenge_case13", "label": "libspdm_test_requester_challenge_case13", "physics": true, "shape": "dot", "size": 1, "x": 83.49187654416315, "y": 171.21290654573355}, {"group": 1, "id": "libspdm_test_requester_challenge_case7", "label": "libspdm_test_requester_challenge_case7", "physics": true, "shape": "dot", "size": 1, "x": -128.87900351777296, "y": -141.92552839818333}, {"group": 1, "id": "local context", "label": "local context", "physics": true, "shape": "dot", "size": 2, "x": 153.8823383255231, "y": -60.4477504346065}, {"group": 7, "id": "m_libspdm_local_buffer", "label": "m_libspdm_local_buffer", "physics": true, "shape": "dot", "size": 2, "x": 184.53260512493753, "y": -60.496641890729265}, {"group": 1, "id": "measurement", "label": "measurement", "physics": true, "shape": "dot", "size": 1, "x": -2.750544800154556, "y": -189.4921365152202}, {"group": 3, "id": "measurement_hash", "label": "measurement_hash", "physics": true, "shape": "dot", "size": 3, "x": -60.77679585970017, "y": -190.98918442099264}, {"group": 1, "id": "peer root cert provision", "label": "peer root cert provision", "physics": true, "shape": "dot", "size": 1, "x": 55.80202693626145, "y": 175.90192936489}, {"group": 1, "id": "peer_used_cert_chain", "label": "peer_used_cert_chain", "physics": true, "shape": "dot", "size": 1, "x": 67.26102142101182, "y": -178.05666144974012}, {"group": 3, "id": "request", "label": "request", "physics": true, "shape": "dot", "size": 1, "x": -80.46936314616, "y": -169.22317644461907}, {"group": 1, "id": "requester", "label": "requester", "physics": true, "shape": "dot", "size": 1, "x": -66.07129793740901, "y": 187.10390514273288}, {"group": 1, "id": "responder", "label": "responder", "physics": true, "shape": "dot", "size": 1, "x": -164.16007689393996, "y": -97.26965993343754}, {"group": 4, "id": "responder public certificate", "label": "responder public certificate", "physics": true, "shape": "dot", "size": 1, "x": -93.18977032300192, "y": 155.0346264103742}, {"group": 4, "id": "root certificate hash", "label": "root certificate hash", "physics": true, "shape": "dot", "size": 1, "x": 13.18493716019977, "y": -195.8660940614663}, {"group": 1, "id": "secured message context", "label": "secured message context", "physics": true, "shape": "dot", "size": 1, "x": 54.33394511916546, "y": -192.6880879462485}, {"group": 3, "id": "secured_message_context", "label": "secured_message_context", "physics": true, "shape": "dot", "size": 1, "x": 193.999230442425, "y": 14.989144511355104}, {"group": 3, "id": "session_info", "label": "session_info", "physics": true, "shape": "dot", "size": 2, "x": 119.13689746034441, "y": -147.02262379806922}, {"group": 1, "id": "spdm", "label": "spdm", "physics": true, "shape": "dot", "size": 30, "x": -15.62232644222632, "y": -12.916750821132641}, {"group": 1, "id": "spdm context", "label": "spdm context", "physics": true, "shape": "dot", "size": 2, "x": 72.4053205672475, "y": 180.82369361630336}, {"group": 7, "id": "spdm_challenge", "label": "spdm_challenge", "physics": true, "shape": "dot", "size": 1, "x": -119.31988337320941, "y": 167.86988845792473}, {"group": 7, "id": "spdm_challenge_auth", "label": "spdm_challenge_auth", "physics": true, "shape": "dot", "size": 4, "x": -173.29730426769768, "y": -71.2095065297845}, {"group": 3, "id": "spdm_context", "label": "spdm_context", "physics": true, "shape": "dot", "size": 15, "x": -16.71915112251517, "y": 166.88115059681544}, {"group": 16, "id": "spdm_dispatch", "label": "spdm_dispatch", "physics": true, "shape": "dot", "size": 2, "x": -170.058112931573, "y": 22.591401248024717}, {"group": 18, "id": "spdm_error", "label": "spdm_error", "physics": true, "shape": "dot", "size": 1, "x": -146.4188925765921, "y": 118.07140278203751}, {"group": 19, "id": "spdm_error_code_busy", "label": "spdm_error_code_busy", "physics": true, "shape": "dot", "size": 1, "x": 177.6585108148357, "y": 101.59946203255812}, {"group": 7, "id": "spdm_get_digests", "label": "spdm_get_digests", "physics": true, "shape": "dot", "size": 2, "x": -191.92342536451687, "y": -59.85037571156994}, {"group": 7, "id": "spdm_key_update", "label": "spdm_key_update", "physics": true, "shape": "dot", "size": 1, "x": -97.37698332416218, "y": -177.7846237368997}, {"group": 7, "id": "spdm_message_version_11", "label": "spdm_message_version_11", "physics": true, "shape": "dot", "size": 7, "x": -180.777514592403, "y": 59.03725138094678}, {"group": 7, "id": "spdm_message_version_13", "label": "spdm_message_version_13", "physics": true, "shape": "dot", "size": 2, "x": -186.1611528015463, "y": -12.62639321660657}, {"group": 7, "id": "spdm_response", "label": "spdm_response", "physics": true, "shape": "dot", "size": 5, "x": -165.8702964434048, "y": 100.81970954359115}, {"group": 16, "id": "spdm_server_init", "label": "spdm_server_init", "physics": true, "shape": "dot", "size": 1, "x": 95.97251540315204, "y": -171.91323903193702}, {"group": 3, "id": "spdm_test_context", "label": "spdm_test_context", "physics": true, "shape": "dot", "size": 4, "x": 133.58713969600154, "y": 127.5975457932835}, {"group": 1, "id": "transport header", "label": "transport header", "physics": true, "shape": "dot", "size": 1, "x": -45.81064521927496, "y": 165.8938781090722}, {"group": 1, "id": "version", "label": "version", "physics": true, "shape": "dot", "size": 4, "x": -127.44313946757386, "y": 124.86243011134988}, {"group": 2, "id": "buffer", "label": "buffer", "physics": true, "shape": "dot", "size": 1, "x": 190.98816221660843, "y": 2.7672841608296395}, {"group": 9, "id": "measurement_record", "label": "measurement_record", "physics": true, "shape": "dot", "size": 1, "x": -171.80814880072012, "y": -54.291323043032754}, {"group": 8, "id": "file_name", "label": "file_name", "physics": true, "shape": "dot", "size": 1, "x": 194.94893548335872, "y": 51.28213491352862}, {"group": 6, "id": "data", "label": "data", "physics": true, "shape": "dot", "size": 1, "x": -76.99644734376821, "y": 174.15711523132708}, {"group": 12, "id": "spdm_requester_challenge_tests", "label": "spdm_requester_challenge_tests", "physics": true, "shape": "dot", "size": 1, "x": 79.32440879960524, "y": -169.59031511943434}, {"group": 13, "id": "spdm_requester_encap_certificate_tests", "label": "spdm_requester_encap_certificate_tests", "physics": true, "shape": "dot", "size": 1, "x": -136.2530719596554, "y": -100.32406207859532}, {"group": 14, "id": "spdm_requester_digests_tests", "label": "spdm_requester_digests_tests", "physics": true, "shape": "dot", "size": 1, "x": 97.9482625165146, "y": -149.24362065141906}, {"group": 15, "id": "spdm_requester_key_update_tests", "label": "spdm_requester_key_update_tests", "physics": true, "shape": "dot", "size": 1, "x": 164.71026019856362, "y": -98.87009627473631}, {"group": 10, "id": "libspdm_get_test_context", "label": "libspdm_get_test_context", "physics": true, "shape": "dot", "size": 1, "x": 104.79577095601927, "y": 168.6799240802662}, {"group": 17, "id": "libspdm_set_mem", "label": "libspdm_set_mem", "physics": true, "shape": "dot", "size": 1, "x": -72.6652641680975, "y": -183.20518723319032}, {"group": 11, "id": "libspdm_le_to_be_64", "label": "libspdm_le_to_be_64", "physics": true, "shape": "dot", "size": 1, "x": 177.01638800777462, "y": 33.35935245332268}, {"group": 18, "id": "spdm_error_code_response_not_ready", "label": "spdm_error_code_response_not_ready", "physics": true, "shape": "dot", "size": 1, "x": -145.91266603710932, "y": 145.88360250926073}, {"group": 19, "id": "spdm_error_code_unexpected_request", "label": "spdm_error_code_unexpected_request", "physics": true, "shape": "dot", "size": 1, "x": -152.25073888583574, "y": -141.0753894737399}, {"group": 7, "id": "spdm_version_number_shift_bit", "label": "spdm_version_number_shift_bit", "physics": true, "shape": "dot", "size": 1, "x": -161.15765908764467, "y": -116.67513563383794}]);
+                  edges = new vis.DataSet([{"from": "algorithm", "title": "Connection info contains algorithm information such as base hash algo, base asym algo, measurement spec, and measurement hash algo.,contextual proximity", "to": "connection info", "value": 1.5, "weight": 1.5}, {"from": "algorithm", "title": "connection_info contains algorithm as a member.,connection_info contains algorithm,connection_info contains algorithm as a member variable.,contextual proximity", "to": "connection_info", "value": 4.5, "weight": 4.5}, {"from": "algorithm", "title": "SPDM uses an algorithm for base hash, asymmetric, and measurement specifications.,contextual proximity", "to": "spdm", "value": 1.75, "weight": 1.75}, {"from": "capability", "title": "connection_info has a capability that includes flags such as CHAL_CAP and MEAS_CAP.,connection_info has a capability attribute that stores flags for PSK, encryption, MAC, and encapsulation.,connection_info has a capability attribute that stores flags for PSK, encryption, MAC, and encapsulation.,contextual proximity", "to": "connection_info", "value": 4.5, "weight": 4.5}, {"from": "capability", "title": "contextual proximity", "to": "spdm", "value": 0.75, "weight": 0.75}, {"from": "capability flags", "title": "Connection Info has Capability Flags, which indicate the capabilities of the connection.,Connection info has capability flags that indicate PSK, encrypt, MAC, and encapsulation capabilities.,Connection info has capability flags that indicate PSK, encrypt, MAC, and encapsulation capabilities.,Connection info has capability flags that include PSK, encrypt, MAC, and encapsulation capabilities.,contextual proximity", "to": "connection info", "value": 6.0, "weight": 6.0}, {"from": "capability flags", "title": "contextual proximity", "to": "spdm", "value": 0.75, "weight": 0.75}, {"from": "case_id", "title": "contextual proximity", "to": "request", "value": 0.5, "weight": 0.5}, {"from": "case_id", "title": "spdm_test_context contains case_id,contextual proximity", "to": "spdm_test_context", "value": 1.5, "weight": 1.5}, {"from": "certificate", "title": "SPDM uses Certificate for authentication,contextual proximity", "to": "spdm", "value": 1.5, "weight": 1.5}, {"from": "certificate chain", "title": "contextual proximity", "to": "responder public certificate", "value": 0.5, "weight": 0.5}, {"from": "certificate chain", "title": "contextual proximity", "to": "root certificate hash", "value": 0.5, "weight": 0.5}, {"from": "certificate_chain", "title": "CHALLENGE message requests usage of the first certificate in the chain,contextual proximity", "to": "challenge", "value": 1.5, "weight": 1.5}, {"from": "challenge", "title": "contextual proximity", "to": "challenge_auth", "value": 0.5, "weight": 0.5}, {"from": "challenge", "title": "SPDM sends a CHALLENGE message,SPDM sends a challenge request to the responder.,SPDM sends a CHALLENGE message,contextual proximity", "to": "spdm", "value": 4.5, "weight": 4.5}, {"from": "challenge auth", "title": "SPDM uses challenge auth to authenticate the requester.,contextual proximity", "to": "spdm", "value": 1.5, "weight": 1.5}, {"from": "challenge auth message", "title": "SPDM uses Challenge Auth Message for authentication.,contextual proximity", "to": "spdm", "value": 1.5, "weight": 1.5}, {"from": "challenge message", "title": "contextual proximity", "to": "get_capabilities message", "value": 0.5, "weight": 0.5}, {"from": "chunk response", "title": "SPDM is related to Chunk Response as it is used to send a chunk response in the SPDM protocol.,contextual proximity", "to": "spdm", "value": 1.5, "weight": 1.5}, {"from": "connection", "title": "SPDM is established over a connection,contextual proximity", "to": "spdm", "value": 1.5, "weight": 1.5}, {"from": "connection", "title": "contextual proximity", "to": "version", "value": 0.5, "weight": 0.5}, {"from": "connection info", "title": "SPDM contains connection information,SPDM has a connection info that contains algorithm and version information.,SPDM has a connection info that stores version, connection state, and capability flags.,SPDM has a connection info that stores version, connection state, and capability flags.,SPDM has a connection info that contains version, connection state, and capability flags.,contextual proximity", "to": "spdm", "value": 7.5, "weight": 7.5}, {"from": "connection info", "title": "SPDM Context contains Connection Info, which holds the state of the connection.,contextual proximity", "to": "spdm context", "value": 1.5, "weight": 1.5}, {"from": "connection info", "title": "contextual proximity", "to": "version", "value": 0.5, "weight": 0.5}, {"from": "connection state", "title": "SPDM has a connection state that is negotiated.,contextual proximity", "to": "spdm", "value": 1.5, "weight": 1.5}, {"from": "connection_info", "title": "contextual proximity", "to": "connection_state", "value": 0.5, "weight": 0.5}, {"from": "connection_info", "title": "libspdm_context contains connection_info as a member,libspdm_context contains connection_info,libspdm_context contains connection_info as a member variable.,contextual proximity", "to": "libspdm_context", "value": 4.75, "weight": 4.75}, {"from": "connection_info", "title": "libspdm_context_t contains connection_info as a member.,contextual proximity", "to": "libspdm_context_t", "value": 1.5, "weight": 1.5}, {"from": "connection_info", "title": "contextual proximity", "to": "peer_used_cert_chain", "value": 1.0, "weight": 1.0}, {"from": "connection_info", "title": "SPDM has a connection_info object that stores information about the connection.,SPDM has a connection_info that contains various parameters such as connection_state, capability, and algorithm.,SPDM has a connection_info object that stores information about the connection.,SPDM has a connection_info attribute that stores connection state and capability flags.,SPDM has a connection_info attribute that stores connection state and capability flags.,SPDM has a connection_info attribute that stores connection state and capabilities.,contextual proximity", "to": "spdm", "value": 9.25, "weight": 9.25}, {"from": "connection_info", "title": "spdm_context has a connection_info,spdm_context has a connection_info attribute,spdm_context has connection_info,spdm_context has a connection_info.,spdm_context contains connection_info as a component,spdm_context contains connection_info as a field,spdm_context contains connection_info as a component.,spdm_context contains connection_info as a field,spdm_context contains connection_info as a field to store the connection information.,spdm_context contains connection_info,SPDM_CONTEXT contains CONNECTION_INFO as one of its components.,contextual proximity", "to": "spdm_context", "value": 15.75, "weight": 15.75}, {"from": "connection_info", "title": "contextual proximity", "to": "spdm_test_context", "value": 0.75, "weight": 0.75}, {"from": "connection_info", "title": "contextual proximity", "to": "version", "value": 1.5, "weight": 1.5}, {"from": "digest", "title": "SPDM produces a digest response message,contextual proximity", "to": "spdm", "value": 1.5, "weight": 1.5}, {"from": "digest", "title": "digest is calculated based on the SPDM_GET_DIGESTS request,contextual proximity", "to": "spdm_get_digests", "value": 1.5, "weight": 1.5}, {"from": "digest response", "title": "SPDM uses Digest Response to get digests.,contextual proximity", "to": "spdm", "value": 1.5, "weight": 1.5}, {"from": "encapsulated request response", "title": "SPDM uses Encapsulated Request Response to send requests.,contextual proximity", "to": "spdm", "value": 1.5, "weight": 1.5}, {"from": "error", "title": "KEY_UPDATE message produces an ERROR message indicating InvalidRequest.,contextual proximity", "to": "key_update", "value": 1.5, "weight": 1.5}, {"from": "error message", "title": "SPDM uses Error Message to indicate invalid requests.,contextual proximity", "to": "spdm", "value": 1.5, "weight": 1.5}, {"from": "error response", "title": "SPDM sends Error Response when large response is required.,contextual proximity", "to": "spdm", "value": 1.5, "weight": 1.5}, {"from": "key update", "title": "SPDM performs key update operations,contextual proximity", "to": "spdm", "value": 1.5, "weight": 1.5}, {"from": "key_update", "title": "SPDM receives a KEY_UPDATE message.,contextual proximity", "to": "spdm", "value": 1.5, "weight": 1.5}, {"from": "libspdm", "title": "contextual proximity", "to": "libspdm_context", "value": 0.5, "weight": 0.5}, {"from": "libspdm", "title": "SPDM is implemented by LIBSPDM,contextual proximity", "to": "spdm", "value": 1.5, "weight": 1.5}, {"from": "libspdm_challenge", "title": "contextual proximity", "to": "measurement_hash", "value": 0.5, "weight": 0.5}, {"from": "libspdm_challenge", "title": "contextual proximity", "to": "spdm_context", "value": 0.5, "weight": 0.5}, {"from": "libspdm_challenge_ex", "title": "contextual proximity", "to": "measurement_hash", "value": 0.5, "weight": 0.5}, {"from": "libspdm_challenge_ex", "title": "contextual proximity", "to": "spdm_context", "value": 0.5, "weight": 0.5}, {"from": "libspdm_context", "title": "libspdm_read_responder_public_certificate_chain uses libspdm_context to retrieve local certificate chain provision.,libspdm_read_responder_public_certificate_chain uses libspdm_context to retrieve local_cert_chain_provision_size and local_cert_chain_provision.,libspdm_read_responder_public_certificate_chain uses libspdm_context to retrieve local certificate chain provision.,libspdm_read_responder_public_certificate_chain uses libspdm_context to retrieve local certificate chain provision.,libspdm_read_responder_public_certificate_chain uses libspdm_context to retrieve local_cert_chain_provision,libspdm_read_responder_public_certificate_chain uses libspdm_context to retrieve local certificate chain provision,libspdm_read_responder_public_certificate_chain uses libspdm_context to retrieve local_cert_chain_provision_size and local_cert_chain_provision.,libspdm_read_responder_public_certificate_chain uses libspdm_context to read responder public certificate chain,libspdm_read_responder_public_certificate_chain uses libspdm_context to retrieve local certificate chain provision,libspdm_read_responder_public_certificate_chain uses libspdm_context to retrieve local certificate chain provision.,contextual proximity", "to": "libspdm_read_responder_public_certificate_chain", "value": 12.5, "weight": 12.5}, {"from": "libspdm_context", "title": "contextual proximity", "to": "libspdm_test_context", "value": 0.5, "weight": 0.5}, {"from": "libspdm_context", "title": "contextual proximity", "to": "spdm_context", "value": 0.5, "weight": 0.5}, {"from": "libspdm_context", "title": "contextual proximity", "to": "spdm_test_context", "value": 0.75, "weight": 0.75}, {"from": "libspdm_context_t", "title": "libspdm_test_requester_challenge_case7 uses libspdm_context_t to store connection information and algorithm settings.", "to": "libspdm_test_requester_challenge_case7", "value": 1.0, "weight": 1.0}, {"from": "libspdm_context_t", "title": "SPDM is associated with libspdm_context_t, which is a structure that holds the context for SPDM operations.", "to": "spdm", "value": 1.0, "weight": 1.0}, {"from": "libspdm_copy_mem", "title": "contextual proximity", "to": "m_libspdm_local_buffer", "value": 1.0, "weight": 1.0}, {"from": "libspdm_copy_mem", "title": "contextual proximity", "to": "spdm_response", "value": 1.0, "weight": 1.0}, {"from": "libspdm_dump_hex_str", "title": "libspdm_dump_hex_str function takes buffer as an input parameter.", "to": "buffer", "value": 1.0, "weight": 1.0}, {"from": "libspdm_get_certificate_request3", "title": "contextual proximity", "to": "spdm_context", "value": 0.5, "weight": 0.5}, {"from": "libspdm_get_encap_response_certificate", "title": "contextual proximity", "to": "spdm_context", "value": 0.5, "weight": 0.5}, {"from": "libspdm_get_encap_response_challenge_auth", "title": "contextual proximity", "to": "spdm_context", "value": 0.5, "weight": 0.5}, {"from": "libspdm_get_encap_response_key_update", "title": "contextual proximity", "to": "spdm_context", "value": 0.75, "weight": 0.75}, {"from": "libspdm_get_measurement", "title": "libspdm_get_measurement function uses measurement_record as an output parameter to store the measurement record.", "to": "measurement_record", "value": 1.0, "weight": 1.0}, {"from": "libspdm_read_input_file", "title": "libspdm_read_input_file function takes file_name as an input parameter.", "to": "file_name", "value": 1.0, "weight": 1.0}, {"from": "libspdm_read_responder_public_certificate_chain", "title": "contextual proximity", "to": "spdm_context", "value": 0.5, "weight": 0.5}, {"from": "libspdm_read_responder_public_key", "title": "libspdm_read_responder_public_key function reads the responder public key into the data variable.", "to": "data", "value": 1.0, "weight": 1.0}, {"from": "libspdm_requester_challenge_test_main", "title": "libspdm_requester_challenge_test_main contains a list of unit tests defined in spdm_requester_challenge_tests", "to": "spdm_requester_challenge_tests", "value": 1.0, "weight": 1.0}, {"from": "libspdm_requester_challenge_test_receive_message", "title": "libspdm_requester_challenge_test_receive_message uses libspdm_test_context to determine the test case.", "to": "libspdm_test_context", "value": 1.0, "weight": 1.0}, {"from": "libspdm_requester_challenge_test_send_message", "title": "libspdm_requester_challenge_test_send_message function takes spdm_context as a parameter.", "to": "spdm_context", "value": 1.0, "weight": 1.0}, {"from": "libspdm_requester_encap_certificate_test_main", "title": "libspdm_requester_encap_certificate_test_main contains a list of spdm_requester_encap_certificate_tests", "to": "spdm_requester_encap_certificate_tests", "value": 1.0, "weight": 1.0}, {"from": "libspdm_requester_encap_challenge_auth", "title": "libspdm_requester_encap_challenge_auth produces a valid SPDM_CHALLENGE_AUTH response message", "to": "spdm_challenge_auth", "value": 1.0, "weight": 1.0}, {"from": "libspdm_requester_encap_digests_test_main", "title": "libspdm_requester_encap_digests_test_main contains a list of unit tests defined in spdm_requester_digests_tests.", "to": "spdm_requester_digests_tests", "value": 1.0, "weight": 1.0}, {"from": "libspdm_requester_encap_key_update_test_main", "title": "libspdm_requester_encap_key_update_test_main contains a list of unit tests defined in spdm_requester_key_update_tests", "to": "spdm_requester_key_update_tests", "value": 1.0, "weight": 1.0}, {"from": "libspdm_requester_encap_request_test_send_message", "title": "libspdm_requester_encap_request_test_send_message uses libspdm_get_test_context to retrieve the test context.", "to": "libspdm_get_test_context", "value": 1.0, "weight": 1.0}, {"from": "libspdm_reset_message_b", "title": "libspdm_reset_message_b is a function that takes spdm_context as an argument to reset an internal buffer.", "to": "spdm_context", "value": 1.0, "weight": 1.0}, {"from": "libspdm_responder_dispatch_message", "title": "spdm_dispatch uses libspdm_responder_dispatch_message to dispatch messages.,contextual proximity", "to": "spdm_dispatch", "value": 1.5, "weight": 1.5}, {"from": "libspdm_set_standard_key_update_test_secrets", "title": "libspdm_set_standard_key_update_test_secrets uses libspdm_set_mem to set memory.", "to": "libspdm_set_mem", "value": 1.0, "weight": 1.0}, {"from": "libspdm_test_common_context_data_case1", "title": "libspdm_test_common_context_data_case1 uses libspdm_le_to_be_64 for testing.", "to": "libspdm_le_to_be_64", "value": 1.0, "weight": 1.0}, {"from": "libspdm_test_context", "title": "spdm_context is part of libspdm_test_context,contextual proximity", "to": "spdm_context", "value": 1.5, "weight": 1.5}, {"from": "libspdm_test_context", "title": "libspdm_test_requester_challenge_case13 uses libspdm_test_context as a parameter.", "to": "libspdm_test_requester_challenge_case13", "value": 1.0, "weight": 1.0}, {"from": "local context", "title": "contextual proximity", "to": "peer root cert provision", "value": 0.5, "weight": 0.5}, {"from": "local context", "title": "SPDM Context contains Local Context,contextual proximity", "to": "spdm context", "value": 1.5, "weight": 1.5}, {"from": "m_libspdm_local_buffer", "title": "contextual proximity", "to": "spdm_response", "value": 0.5, "weight": 0.5}, {"from": "measurement", "title": "SPDM uses measurement to verify the authenticity of the response.,contextual proximity", "to": "spdm", "value": 1.5, "weight": 1.5}, {"from": "measurement_hash", "title": "contextual proximity", "to": "spdm_context", "value": 0.5, "weight": 0.5}, {"from": "requester", "title": "SPDM has a Requester component,SPDM receives a request message from Requester,contextual proximity", "to": "spdm", "value": 3.0, "weight": 3.0}, {"from": "responder", "title": "SPDM receives a response from the responder.,contextual proximity", "to": "spdm", "value": 1.5, "weight": 1.5}, {"from": "secured message context", "title": "SPDM uses secured message context to manage secrets,contextual proximity", "to": "spdm", "value": 1.5, "weight": 1.5}, {"from": "secured_message_context", "title": "session_info contains secured_message_context,contextual proximity", "to": "session_info", "value": 1.5, "weight": 1.5}, {"from": "session_info", "title": "spdm_context contains session_info,spdm_context contains session_info as a member variable,contextual proximity", "to": "spdm_context", "value": 3.0, "weight": 3.0}, {"from": "spdm", "title": "contextual proximity", "to": "spdm_challenge_auth", "value": 1.0, "weight": 1.0}, {"from": "spdm", "title": "contextual proximity", "to": "spdm_message_version_11", "value": 0.75, "weight": 0.75}, {"from": "spdm", "title": "contextual proximity", "to": "spdm_message_version_13", "value": 0.75, "weight": 0.75}, {"from": "spdm", "title": "contextual proximity", "to": "transport header", "value": 1.0, "weight": 1.0}, {"from": "spdm", "title": "contextual proximity", "to": "version", "value": 1.25, "weight": 1.25}, {"from": "spdm_challenge", "title": "SPDM_CHALLENGE is a message type in SPDM protocol with version 11.", "to": "spdm_message_version_11", "value": 1.0, "weight": 1.0}, {"from": "spdm_challenge_auth", "title": "contextual proximity", "to": "spdm_message_version_11", "value": 0.75, "weight": 0.75}, {"from": "spdm_challenge_auth", "title": "spdm_response is of type SPDM_CHALLENGE_AUTH,contextual proximity", "to": "spdm_response", "value": 2.0, "weight": 2.0}, {"from": "spdm_context", "title": "spdm_test_context contains spdm_context,spdm_test_context contains spdm_context,spdm_test_context contains spdm_context,contextual proximity", "to": "spdm_test_context", "value": 5.75, "weight": 5.75}, {"from": "spdm_dispatch", "title": "contextual proximity", "to": "spdm_server_init", "value": 0.5, "weight": 0.5}, {"from": "spdm_error", "title": "SPDM_ERROR is related to SPDM_ERROR_CODE_RESPONSE_NOT_READY as it is the error code for the response not ready message.", "to": "spdm_error_code_response_not_ready", "value": 1.0, "weight": 1.0}, {"from": "spdm_error_code_busy", "title": "SPDM_ERROR_CODE_BUSY is treated as SPDM_ERROR_CODE_UNEXPECTED_REQUEST in error handling", "to": "spdm_error_code_unexpected_request", "value": 1.0, "weight": 1.0}, {"from": "spdm_get_digests", "title": "SPDM_MESSAGE_VERSION_11 is used as the version for SPDM_GET_DIGESTS request,contextual proximity", "to": "spdm_message_version_11", "value": 1.75, "weight": 1.75}, {"from": "spdm_key_update", "title": "SPDM_KEY_UPDATE is a message type in SPDM_MESSAGE_VERSION_11", "to": "spdm_message_version_11", "value": 1.0, "weight": 1.0}, {"from": "spdm_message_version_11", "title": "contextual proximity", "to": "spdm_response", "value": 1.0, "weight": 1.0}, {"from": "spdm_message_version_11", "title": "SPDM_MESSAGE_VERSION_11 is shifted by SPDM_VERSION_NUMBER_SHIFT_BIT to form the connection info version.", "to": "spdm_version_number_shift_bit", "value": 1.0, "weight": 1.0}, {"from": "spdm_message_version_13", "title": "spdm_response-\u003eheader.spdm_version is set to SPDM_MESSAGE_VERSION_13", "to": "spdm_response", "value": 1.0, "weight": 1.0}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+                      network.on("stabilizationProgress", function(params) {
+                          document.getElementById('loadingBar').removeAttribute("style");
+                          var maxWidth = 496;
+                          var minWidth = 20;
+                          var widthFactor = params.iterations/params.total;
+                          var width = Math.max(minWidth,maxWidth * widthFactor);
+                          document.getElementById('bar').style.width = width + 'px';
+                          document.getElementById('text').innerHTML = Math.round(widthFactor*100) + '%';
+                      });
+                      network.once("stabilizationIterationsDone", function() {
+                          document.getElementById('text').innerHTML = '100%';
+                          document.getElementById('bar').style.width = '496px';
+                          document.getElementById('loadingBar').style.opacity = 0;
+                          // really clean the dom element
+                          setTimeout(function () {document.getElementById('loadingBar').style.display = 'none';}, 500);
+                      });
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>
