@@ -1,0 +1,16 @@
+## Identified Chunks- Coverage_files: ['WinPacketFilter.c']
+  Relevant Paths: vram\EmulatorPkg\Win\Host
+  line_numbers: 272-393
+  Task: Initialize, reset, and shut down network interface
+- Coverage_files: ['WinPacketFilter.c']
+  Relevant Paths: vram\EmulatorPkg\Win\Host
+  line_numbers: 394-488
+  Task: Manage multicast receive filters
+- Coverage_files: ['WinPacketFilter.c']
+  Relevant Paths: vram\EmulatorPkg\Win\Host
+  line_numbers: 589-668
+  Task: Read interrupt status and recycled transmit buffer status
+- Coverage_files: ['WinPacketFilter.c']
+  Relevant Paths: vram\EmulatorPkg\Win\Host
+  line_numbers: 669-754
+  Task: Send packet over network interface

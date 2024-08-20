@@ -1,0 +1,19 @@
+Coverage for section_2_script_1.py:
+Coverage_files: 3
+Relevant Paths: vram\EmulatorPkg\Win\Host\WinPacketFilter.c
+line_numbers: 755-874, 875-990, 991-1149
+Coverage_files: 2
+Relevant Paths: vram\EmulatorPkg\Win\Host\WinGopScreen.c
+line_numbers: 1-152, 153-270
+Coverage_files: 3
+Relevant Paths: vram\EmulatorPkg\Win\Host\WinPacketFilter.c
+line_numbers: 755-874, 875-990, 991-1149
+Coverage_files: 2
+Relevant Paths: vram\EmulatorPkg\Win\Host\WinGopScreen.c
+line_numbers: 1-152, 153-270
+Coverage_files: 3
+Relevant Paths: vram\EmulatorPkg\Win\Host\WinPacketFilter.c
+line_numbers: 755-874, 875-990, 991-1149
+Coverage_files: 2
+Relevant Paths: vram\EmulatorPkg\Win\Host\WinGopScreen.c
+line_numbers: 1-152, 153-270

@@ -1,0 +1,20 @@
+## Identified Chunks- Coverage_files: ['BerkeleyPacketFilter.c']
+  Relevant Paths: vram\EmulatorPkg\Unix\Host
+  line_numbers: ['291-408', '409-548', '549-632', '633-732', '733-803']
+  Task: Network Interface Initialization and Management
+- Coverage_files: ['BerkeleyPacketFilter.c']
+  Relevant Paths: vram\EmulatorPkg\Unix\Host
+  line_numbers: ['291-408', '409-548']
+  Task: Packet Filter Installation and Promiscuous Mode Enablement
+- Coverage_files: ['BerkeleyPacketFilter.c']
+  Relevant Paths: vram\EmulatorPkg\Unix\Host
+  line_numbers: ['549-632']
+  Task: Network Interface Setting Management
+- Coverage_files: ['BerkeleyPacketFilter.c']
+  Relevant Paths: vram\EmulatorPkg\Unix\Host
+  line_numbers: ['633-732']
+  Task: Unsupported EMU_SNP_PROTOCOL Functions
+- Coverage_files: ['BerkeleyPacketFilter.c']
+  Relevant Paths: vram\EmulatorPkg\Unix\Host
+  line_numbers: ['733-803']
+  Task: EmuSnp Protocol Functions

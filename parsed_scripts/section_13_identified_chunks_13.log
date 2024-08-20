@@ -1,0 +1,12 @@
+## Identified Chunks- Coverage_files: ['vram\\EmulatorPkg\\Unix\\Host\\Host.c', 'vram\\EmulatorPkg\\Unix\\Host\\EmuThunk.c']
+  Relevant Paths: vram\EmulatorPkg\Unix\Host
+  line_numbers: ['1044-1186', '1187-1329', '1-192', '193-380', '381-439']
+  Task: EmulatorPkg
+- Coverage_files: ['vram\\EmulatorPkg\\Unix\\Host\\Host.c']
+  Relevant Paths: vram\EmulatorPkg\Unix\Host
+  line_numbers: ['1044-1186', '1187-1329']
+  Task: GdbScript
+- Coverage_files: ['vram\\EmulatorPkg\\Unix\\Host\\EmuThunk.c']
+  Relevant Paths: vram\EmulatorPkg\Unix\Host
+  line_numbers: ['1-192', '193-380', '381-439']
+  Task: EmuThunk

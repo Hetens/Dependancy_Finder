@@ -1,0 +1,20 @@
+## Identified Chunks- Coverage_files: ['X11GraphicsWindow.c']
+  Relevant Paths: vram\EmulatorPkg\Unix\Host
+  line_numbers: 435-548
+  Task: Keyboard mapping and Unicode character handling
+- Coverage_files: ['X11GraphicsWindow.c']
+  Relevant Paths: vram\EmulatorPkg\Unix\Host
+  line_numbers: 549-730
+  Task: X11 event polling and processing
+- Coverage_files: ['X11GraphicsWindow.c']
+  Relevant Paths: vram\EmulatorPkg\Unix\Host
+  line_numbers: 731-887
+  Task: X11 graphics and keyboard input handling
+- Coverage_files: ['X11GraphicsWindow.c']
+  Relevant Paths: vram\EmulatorPkg\Unix\Host
+  line_numbers: 888-1017
+  Task: Graphics operations (blitting, filling, etc.)
+- Coverage_files: ['X11GraphicsWindow.c']
+  Relevant Paths: vram\EmulatorPkg\Unix\Host
+  line_numbers: 1018-1170
+  Task: X11 graphics window protocol implementation

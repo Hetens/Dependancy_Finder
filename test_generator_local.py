@@ -22,55 +22,23 @@ import logging
 from tenacity import retry, wait_exponential, stop_after_attempt
 import os
 from langchain_core.rate_limiters import InMemoryRateLimiter
-
+from langchain_huggingface.llms import HuggingFacePipeline
+import torch
+import time
+from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
 
 
 ###################################################################################################################################################
 # Loading the LLMS
 ###################################################################################################################################################
-
-
-
-rate_limiter = InMemoryRateLimiter(
-    requests_per_second=0.3,)
-
-os.environ["GROQ_API_KEY"]  =str(os.getenv("GROQ_API_KEY"))
-from langchain_groq import ChatGroq
-import httpx
-http_client = httpx.Client(verify=False)
-llm = ChatGroq(
-    model="llama-3.1-8b-instant",
-    temperature=0.1,
-    http_client=http_client,
-    max_tokens=1000,
-    timeout=30,
-    max_retries=2,
-    rate_limiter=rate_limiter
-    # other params...
+# Load the transformers pipeline
+llm = HuggingFacePipeline.from_model_id(
+    model_id="akjindal53244/Llama-3.1-Storm-8B",
+    task="text-generation",
+    device="cuda",
+    model_kwargs={"torch_dtype": torch.bfloat16},
+    pipeline_kwargs={"max_new_tokens": 1000, "do_sample": True, "temperature": 0.01, "top_k": 100, "top_p": 0.95}
 )
-logging.basicConfig(level=logging.INFO)
-
-api_key = os.getenv('API_KEY')
-base_url = os.getenv('API_URL')
-max_output_tokens = 600
-streaming = False
-available_models = [
-    "mixtral-8x7b-instruct-v01", 
-    "gemma-7b-it", 
-    "mistral-7b-instruct-v02", 
-    "llama-2-70b-chat", 
-    "phi-3-mini-128k-instruct", 
-    "llama-3-8b-instruct"]
-model_selected = available_models[0]
-
-langchain_llm = OpenAI(
-    base_url=base_url,
-    model=model_selected,
-    http_client=http_client,
-    api_key=api_key,
-    max_tokens=max_output_tokens,
-)
-
 
 
 ###################################################################################################################################################

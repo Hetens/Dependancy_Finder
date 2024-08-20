@@ -1,0 +1,8 @@
+## Identified Chunks- Coverage_files: ['PlatformBmData.c', 'ThunkPpiToProtocolPei.c', 'PpiListLib.c', 'BerkeleyPacketFilter.c']
+  Relevant Paths: vram\EmulatorPkg\Library\PlatformBmLib\PlatformBmData.c, vram\EmulatorPkg\ThunkPpiToProtocolPei\ThunkPpiToProtocolPei.c, vram\EmulatorPkg\Library\SecPpiListLib\PpiListLib.c, vram\EmulatorPkg\Unix\Host\BerkeleyPacketFilter.c
+  line_numbers: ['1-91', '1-67', '1-10', '138-290']
+  Task: Initialize platform-specific device paths and console connections
+- Coverage_files: ['BerkeleyPacketFilter.c']
+  Relevant Paths: vram\EmulatorPkg\Unix\Host\BerkeleyPacketFilter.c
+  line_numbers: ['1-137']
+  Task: Register storage for SNP Mode

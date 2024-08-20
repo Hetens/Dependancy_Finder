@@ -1,0 +1,3 @@
+Currently it is using RAM raw
+Try to load the model onto the gpu
+Re installled torch and torchvision

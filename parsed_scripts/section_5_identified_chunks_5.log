@@ -1,0 +1,8 @@
+## Identified Chunks- Coverage_files: ['vram\\EmulatorPkg\\Library\\SecPeiServicesLib\\PeiServicesLib.c', 'vram\\EmulatorPkg\\Unix\\Host\\MemoryAllocationLib.c', 'vram\\EmulatorPkg\\Unix\\Host\\BlockIo.c']
+  Relevant Paths: vram\EmulatorPkg\Library\SecPeiServicesLib\PeiServicesLib.c, vram\EmulatorPkg\Unix\Host\MemoryAllocationLib.c, vram\EmulatorPkg\Unix\Host\BlockIo.c
+  line_numbers: ['407-526', '527-560', '1-135', '1-154']
+  Task: Memory Management and Block I/O
+- Coverage_files: ['vram\\EmulatorPkg\\Library\\SecPeiServicesLib\\PeiServicesLib.c']
+  Relevant Paths: vram\EmulatorPkg\Library\SecPeiServicesLib\PeiServicesLib.c
+  line_numbers: ['407-526']
+  Task: PEI Services

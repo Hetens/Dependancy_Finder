@@ -1,0 +1,20 @@
+## Identified Chunks- Coverage_files: ['BerkeleyPacketFilter.c', 'Reset.c', 'SmbiosLib.c']
+  Relevant Paths: vram\EmulatorPkg\Unix\Host\BerkeleyPacketFilter.c, vram\EmulatorPkg\ResetRuntimeDxe\Reset.c, vram\EmulatorPkg\Library\SmbiosLib\SmbiosLib.c
+  line_numbers: ['804-904', '905-1067', '1068-1105', '1-104', '1-148']
+  Task: Implementing network packet transmission and reception
+- Coverage_files: ['BerkeleyPacketFilter.c']
+  Relevant Paths: vram\EmulatorPkg\Unix\Host\BerkeleyPacketFilter.c
+  line_numbers: ['905-1067']
+  Task: Retrieving network packets from BPF device
+- Coverage_files: ['BerkeleyPacketFilter.c']
+  Relevant Paths: vram\EmulatorPkg\Unix\Host\BerkeleyPacketFilter.c
+  line_numbers: ['1068-1105']
+  Task: Implementing EFI interface thunk for EmuSnp protocol
+- Coverage_files: ['Reset.c']
+  Relevant Paths: vram\EmulatorPkg\ResetRuntimeDxe\Reset.c
+  line_numbers: ['1-104']
+  Task: Emulating Reset Architectural Protocol
+- Coverage_files: ['SmbiosLib.c']
+  Relevant Paths: vram\EmulatorPkg\Library\SmbiosLib\SmbiosLib.c
+  line_numbers: ['1-148']
+  Task: Providing library functions for SMBIOS operations

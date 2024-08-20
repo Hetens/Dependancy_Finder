@@ -1,0 +1,20 @@
+## Identified Chunks- Coverage_files: ['Host.c']
+  Relevant Paths: vram\EmulatorPkg\Unix\Host
+  line_numbers: ['266-414', '415-567', '568-705', '706-890', '891-1043']
+  Task: Load and map firmware device file (FD) into memory
+- Coverage_files: ['Host.c']
+  Relevant Paths: vram\EmulatorPkg\Unix\Host
+  line_numbers: ['415-567']
+  Task: Map file descriptor to a memory region
+- Coverage_files: ['Host.c']
+  Relevant Paths: vram\EmulatorPkg\Unix\Host
+  line_numbers: ['568-705']
+  Task: Compute and configure memory allocation for PEI core
+- Coverage_files: ['Host.c']
+  Relevant Paths: vram\EmulatorPkg\Unix\Host
+  line_numbers: ['706-890']
+  Task: Implement various support routines for PE/COFF loader
+- Coverage_files: ['Host.c']
+  Relevant Paths: vram\EmulatorPkg\Unix\Host
+  line_numbers: ['891-1043']
+  Task: Provide support routines for PE/COFF loader

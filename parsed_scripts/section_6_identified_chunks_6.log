@@ -1,0 +1,28 @@
+## Identified Chunks- Coverage_files: ['BlockIo.c']
+  Relevant Paths: vram\EmulatorPkg\Unix\Host
+  line_numbers: 155-321
+  Task: EmuBlockIoReadWriteCommon
+- Coverage_files: ['BlockIo.c']
+  Relevant Paths: vram\EmulatorPkg\Unix\Host
+  line_numbers: 322-419
+  Task: EmuBlockIoReadBlocks
+- Coverage_files: ['vram\\EmulatorPkg\\RealTimeClockRuntimeDxe\\RealTimeClock.c']
+  Relevant Paths: vram\EmulatorPkg\RealTimeClockRuntimeDxe\RealTimeClock.c
+  line_numbers: 189-309
+  Task: InitializeRealTimeClock
+- Coverage_files: ['vram\\EmulatorPkg\\Unix\\Host\\LinuxPacketFilter.c']
+  Relevant Paths: vram\EmulatorPkg\Unix\Host\LinuxPacketFilter.c
+  line_numbers: 1-120
+  Task: Linux Packet Filter implementation
+- Coverage_files: ['vram\\EmulatorPkg\\Unix\\Host\\LinuxPacketFilter.c']
+  Relevant Paths: vram\EmulatorPkg\Unix\Host\LinuxPacketFilter.c
+  line_numbers: 121-213
+  Task: Network interface protocol functions
+- Coverage_files: ['vram\\EmulatorPkg\\Unix\\Host\\LinuxPacketFilter.c']
+  Relevant Paths: vram\EmulatorPkg\Unix\Host\LinuxPacketFilter.c
+  line_numbers: 214-311
+  Task: Network interface operations
+- Coverage_files: ['vram\\EmulatorPkg\\Unix\\Host\\LinuxPacketFilter.c']
+  Relevant Paths: vram\EmulatorPkg\Unix\Host\LinuxPacketFilter.c
+  line_numbers: 312-396
+  Task: EMU_SNP_PROTOCOL interface functions

@@ -1,0 +1,12 @@
+## Identified Chunks- Coverage_files: ['LinuxPacketFilter.c', 'X11GraphicsWindow.c']
+  Relevant Paths: ['vram\\EmulatorPkg\\Unix\\Host\\', 'vram\\EmulatorPkg\\Unix\\Host\\']
+  line_numbers: ['397-482', '483-585', '1-144', '145-287', '288-434']
+  Task: EmuSnp protocol implementation and graphics driver
+- Coverage_files: ['LinuxPacketFilter.c']
+  Relevant Paths: ['vram\\EmulatorPkg\\Unix\\Host\\']
+  line_numbers: ['397-482']
+  Task: EmuSnp protocol implementation
+- Coverage_files: ['X11GraphicsWindow.c']
+  Relevant Paths: ['vram\\EmulatorPkg\\Unix\\Host\\']
+  line_numbers: ['1-144', '145-287', '288-434']
+  Task: Graphics driver implementation

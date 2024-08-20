@@ -1,0 +1,16 @@
+## Identified Chunks- Coverage_files: ['SmbiosLib.c', 'PeiServicesLib.c']
+  Relevant Paths: vram\EmulatorPkg\Library\SmbiosLib\SmbiosLib.c
+  line_numbers: ['149-273', '274-340', '1-131', '132-272', '273-406']
+  Task: SMBIOS string modification and retrieval
+- Coverage_files: ['PeiServicesLib.c']
+  Relevant Paths: vram\EmulatorPkg\Library\SecPeiServicesLib\PeiServicesLib.c
+  line_numbers: ['1-131']
+  Task: PEI services library implementation
+- Coverage_files: ['PeiServicesLib.c']
+  Relevant Paths: vram\EmulatorPkg\Library\SecPeiServicesLib\PeiServicesLib.c
+  line_numbers: ['132-272']
+  Task: PEI services for notification, boot mode management, HOB creation and management, firmware volume discovery, and file searching
+- Coverage_files: ['PeiServicesLib.c']
+  Relevant Paths: vram\EmulatorPkg\Library\SecPeiServicesLib\PeiServicesLib.c
+  line_numbers: ['273-406']
+  Task: PEI services for file system operations, memory management, and system reset

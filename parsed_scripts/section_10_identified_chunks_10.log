@@ -1,0 +1,20 @@
+## Identified Chunks- Coverage_files: ['WinFileSystem.c']
+  Relevant Paths: vram\EmulatorPkg\Win\Host
+  line_numbers: ['1-165', '166-337', '338-462', '463-580', '581-722']
+  Task: OpenRootDirectory
+- Coverage_files: ['WinFileSystem.c']
+  Relevant Paths: vram\EmulatorPkg\Win\Host
+  line_numbers: ['166-337']
+  Task: WinNtOpenVolume
+- Coverage_files: ['WinFileSystem.c']
+  Relevant Paths: vram\EmulatorPkg\Win\Host
+  line_numbers: ['338-462']
+  Task: GetNextFileNameToken
+- Coverage_files: ['WinFileSystem.c']
+  Relevant Paths: vram\EmulatorPkg\Win\Host
+  line_numbers: ['463-580']
+  Task: WinNtFileOpen
+- Coverage_files: ['WinFileSystem.c']
+  Relevant Paths: vram\EmulatorPkg\Win\Host
+  line_numbers: ['581-722']
+  Task: Sanitize and normalize file path
