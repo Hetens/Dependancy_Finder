@@ -2,7 +2,7 @@ Here's a draft for your `README.md`:
 
 ---
 
-# Repository Name
+# TEST AUTOMATION SCRIPT GENERATOR
 
 This repository automates the generation of test scripts from your codebase. The workflow involves reading your codebase, gathering relevant information, and generating the necessary test scripts.
 
