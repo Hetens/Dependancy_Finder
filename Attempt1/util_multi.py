@@ -150,7 +150,7 @@ def process_single_file(filepath):
         logging.error(f"Error processing file {filepath}: {str(e)}")
     return None
 
-def writing_full_file_parallel(file_list, output_file='../output_dir/output2.txt', max_workers=None):
+def writing_full_file_parallel(file_list, output_file='../output_dir/output.txt', max_workers=None):
     with ThreadPoolExecutor(max_workers=max_workers) as executor:
         future_to_file = {executor.submit(process_single_file, filepath): filepath for filepath in file_list}
         

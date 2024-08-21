@@ -1,0 +1,13 @@
+Coverage for section_3_script_1.py:
+Coverage_files: 1
+Relevant Paths: vram\EmulatorPkg\Win\Host\WinHost.c
+line_numbers: 1-139
+  Task: Initialize EDK II WIN Host Emulation Environment
+Coverage_files: 1
+Relevant Paths: vram\EmulatorPkg\Win\Host\WinHost.c
+line_numbers: 140-304
+  Task: Provide Emulation Layer for Windows on UEFI Firmware
+Coverage_files: 1
+Relevant Paths: vram\EmulatorPkg\Win\Host\WinHost.c
+line_numbers: 440-542
+  Task: Initialize EDK II WIN Host Emulation Environment

@@ -1,0 +1,21 @@
+Coverage for section_10_script_4.py:
+Coverage_files: ['DiskCache.c']
+Relevant Paths: vram\FatPkg\EnhancedFatDxe\DiskCache.c
+line_numbers: 116-240
+  Task: Retrieve cache page from disk storage
+Coverage_files: ['DiskCache.c']
+Relevant Paths: vram\FatPkg\EnhancedFatDxe\DiskCache.c
+line_numbers: 241-356
+  Task: Access data from FAT cache or disk
+Coverage_files: ['DiskCache.c']
+Relevant Paths: vram\FatPkg\EnhancedFatDxe\DiskCache.c
+line_numbers: 357-484
+  Task: Flush dirty cache data back to disk
+Coverage_files: ['DiskCache.c']
+Relevant Paths: vram\FatPkg\EnhancedFatDxe\DiskCache.c
+line_numbers: 485-489
+  Task: Allocate and configure memory buffers for caching
+Coverage_files: ['FileSpace.c']
+Relevant Paths: vram\FatPkg\EnhancedFatDxe\FileSpace.c
+line_numbers: 1-168
+  Task: Set the value of a FAT entry in a FAT file system volume

@@ -1,0 +1,13 @@
+Coverage for section_5_script_1.py:
+Coverage_files: 1
+Relevant Paths: vram\FatPkg\EnhancedFatDxe\Data.c
+line_numbers: 1-40
+  Task: Initialization
+Coverage_files: 1
+Relevant Paths: vram\FatPkg\EnhancedFatDxe\ComponentName.c
+line_numbers: 1-81
+  Task: Driver Name Retrieval
+Coverage_files: 1
+Relevant Paths: vram\FatPkg\EnhancedFatDxe\ComponentName.c
+line_numbers: 82-180
+  Task: Controller Name Retrieval

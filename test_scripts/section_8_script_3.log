@@ -1,0 +1,21 @@
+Coverage for section_8_script_3.py:
+Coverage_files: 1
+Relevant Paths: vram\EmulatorPkg\Win\Host\WinThunk.c
+line_numbers: 325-526
+  Task: timer management
+Coverage_files: 1
+Relevant Paths: vram\EmulatorPkg\Win\Host\WinThunk.c
+line_numbers: 527-614
+  Task: system time
+Coverage_files: 1
+Relevant Paths: vram\EmulatorPkg\Win\Host\WinBlockIo.c
+line_numbers: 1-159
+  Task: block I/O operations
+Coverage_files: 1
+Relevant Paths: vram\EmulatorPkg\Win\Host\WinBlockIo.c
+line_numbers: 160-265
+  Task: block I/O operations
+Coverage_files: 1
+Relevant Paths: vram\EmulatorPkg\Win\Host\WinBlockIo.c
+line_numbers: 266-347
+  Task: block I/O operations

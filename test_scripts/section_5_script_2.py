@@ -1,0 +1,1 @@
+The final test script generated for the task 'Driver Name Retrieval' is the one shown in the Observation of the second TestGenerator action.

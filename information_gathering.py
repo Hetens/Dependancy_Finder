@@ -17,8 +17,8 @@ llm = ChatGroq(
     http_client=http_client,
     max_tokens=None,
 )
-data_file = "output2.txt"
-output_file = 'summarized_output2.csv'
+data_file = "./output_dir/output.txt"
+output_file = './output_dir/summarized_output.csv'
 
 # Your existing parse_output_file function
 def parse_output_file(filepath):

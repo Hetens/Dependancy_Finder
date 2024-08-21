@@ -1,0 +1,17 @@
+Coverage for section_6_script_2.py:
+Coverage_files: 165
+Relevant Paths: vram\FatPkg\EnhancedFatDxe\FileName.c
+line_numbers: 1-165
+  Task: File system validation
+Coverage_files: 323
+Relevant Paths: vram\FatPkg\EnhancedFatDxe\FileName.c
+line_numbers: 166-323
+  Task: File system name generation
+Coverage_files: 494
+Relevant Paths: vram\FatPkg\EnhancedFatDxe\FileName.c
+line_numbers: 324-494
+  Task: File system name processing and validation
+Coverage_files: 162
+Relevant Paths: vram\EmulatorPkg\Win\Host\WinGopInput.c
+line_numbers: 1-162
+  Task: Keyboard queue management

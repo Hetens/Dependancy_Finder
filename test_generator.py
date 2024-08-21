@@ -82,7 +82,7 @@ langchain_llm = OpenAI(
 # Load the CSV file
 try:
     df = pd.read_csv('./output_dir/summarized_output_filtered.csv')
-    df = df[105:]
+    df = df[150:]
     df[['start_line', 'end_line']] = df['line_numbers'].str.split('-', expand=True)
 except Exception as e:
     print(f"Error loading CSV file: {e}")
@@ -237,7 +237,8 @@ try:
         agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
         verbose=False,
         handle_parsing_errors=True,
-        rate_limiter=rate_limiter
+        rate_limiter=rate_limiter,
+        max_iterations =5
     )
 except Exception as e:
     print(f"Error initializing agent: {e}")

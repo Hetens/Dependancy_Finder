@@ -1,0 +1,13 @@
+Coverage for section_7_script_3.py:
+Coverage_files: 1
+Relevant Paths: vram\EmulatorPkg\Win\Host\WinThunk.c
+line_numbers: 1-148
+  Task: Configure and interact with standard input and output streams
+Coverage_files: 2
+Relevant Paths: vram\EmulatorPkg\Win\Host\WinThunk.c
+line_numbers: 149-324
+  Task: Manage a timer thread and handle keyboard input events
+Coverage_files: 3
+Relevant Paths: vram\EmulatorPkg\Win\Host\WinGopInput.c
+line_numbers: 329-470
+  Task: Read keystroke information from the input device and return keystroke state data

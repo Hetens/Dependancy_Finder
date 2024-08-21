@@ -1898,4 +1898,484 @@ Script file: [section_2_script_6.py](./test_scripts/section_2_script_6.py)
 Coverage log: [section_2_script_6.log](./test_scripts/section_2_script_6.log)
 
 ---
+## Identified Chunks
+
+- Coverage_files: 3
+  Relevant Paths: vram\EmulatorPkg\Win\Host\WinGopScreen.c
+  line_numbers: 1-152, 153-270
+  Task: WinGopScreen.c
+- Coverage_files: 3
+  Relevant Paths: vram\EmulatorPkg\Win\Host\WinPacketFilter.c
+  line_numbers: 755-874, 875-990, 991-1149
+  Task: WinPacketFilter.c
+## Generated Test Scripts
+
+## Identified Chunks
+
+- Coverage_files: 3
+  Relevant Paths: vram\EmulatorPkg\Win\Host\WinGopScreen.c, vram\EmulatorPkg\Win\Host\WinPacketFilter.c
+  line_numbers: 1-152, 153-270, 755-874, 875-990, 991-1149
+  Task: System Initialization and Setup
+- Coverage_files: 2
+  Relevant Paths: vram\EmulatorPkg\Win\Host\WinPacketFilter.c
+  line_numbers: 755-874, 875-990, 991-1149
+  Task: Network Interface Management
+- Coverage_files: 1
+  Relevant Paths: vram\EmulatorPkg\Win\Host\WinGopScreen.c
+  line_numbers: 1-152, 153-270
+  Task: Keyboard Input Handling
+- Coverage_files: 1
+  Relevant Paths: vram\EmulatorPkg\Win\Host\WinPacketFilter.c
+  line_numbers: 991-1149
+  Task: SNP Thunk Protocol Implementation
+- Coverage_files: 3
+  Relevant Paths: vram\EmulatorPkg\Win\Host\WinGopScreen.c, vram\EmulatorPkg\Win\Host\WinPacketFilter.c
+  line_numbers: 1-152, 153-270, 755-874, 875-990, 991-1149
+  Task: System Initialization and Setup
+- Coverage_files: 3
+  Relevant Paths: vram\EmulatorPkg\Win\Host\WinPacketFilter.c
+  line_numbers: 755-874, 875-990, 991-1149
+  Task: Network Interface Management
+- Coverage_files: 2
+  Relevant Paths: vram\EmulatorPkg\Win\Host\WinGopScreen.c
+  line_numbers: 1-152, 153-270
+  Task: Keyboard Input Handling
+- Coverage_files: 1
+  Relevant Paths: vram\EmulatorPkg\Win\Host\WinPacketFilter.c
+  line_numbers: 991-1149
+  Task: SNP Thunk Protocol Implementation
+## Generated Test Scripts
+
+### Script 1
+
+Script file: [section_1_script_1.py](./test_scripts/section_1_script_1.py)
+Coverage log: [section_1_script_1.log](./test_scripts/section_1_script_1.log)
+
+---
+
+### Script 2
+
+Script file: [section_1_script_2.py](./test_scripts/section_1_script_2.py)
+Coverage log: [section_1_script_2.log](./test_scripts/section_1_script_2.log)
+
+---
+
+### Script 3
+
+Script file: [section_1_script_3.py](./test_scripts/section_1_script_3.py)
+Coverage log: [section_1_script_3.log](./test_scripts/section_1_script_3.log)
+
+---
+
+### Script 4
+
+Script file: [section_1_script_4.py](./test_scripts/section_1_script_4.py)
+Coverage log: [section_1_script_4.log](./test_scripts/section_1_script_4.log)
+
+---
+
+### Script 5
+
+Script file: [section_1_script_5.py](./test_scripts/section_1_script_5.py)
+Coverage log: [section_1_script_5.log](./test_scripts/section_1_script_5.log)
+
+---
+
+### Script 6
+
+Script file: [section_1_script_6.py](./test_scripts/section_1_script_6.py)
+Coverage log: [section_1_script_6.log](./test_scripts/section_1_script_6.log)
+
+---
+
+### Script 7
+
+Script file: [section_1_script_7.py](./test_scripts/section_1_script_7.py)
+Coverage log: [section_1_script_7.log](./test_scripts/section_1_script_7.log)
+
+---
+
+### Script 8
+
+Script file: [section_1_script_8.py](./test_scripts/section_1_script_8.py)
+Coverage log: [section_1_script_8.log](./test_scripts/section_1_script_8.log)
+
+---
+
+## Identified Chunks
+
+- Coverage_files: 1
+  Relevant Paths: vram\EmulatorPkg\Win\Host\WinGopScreen.c
+  line_numbers: 271-369
+  Task: Initialization and setup
+- Coverage_files: 1
+  Relevant Paths: vram\EmulatorPkg\Win\Host\WinGopScreen.c
+  line_numbers: 456-596
+  Task: Main processing and event handling
+- Coverage_files: 1
+  Relevant Paths: vram\EmulatorPkg\Win\Host\WinGopScreen.c
+  line_numbers: 597-720
+  Task: Window message processing
+- Coverage_files: 1
+  Relevant Paths: vram\EmulatorPkg\Win\Host\WinGopScreen.c
+  line_numbers: 721-831
+  Task: Window initialization and message loop
+## Generated Test Scripts
+
+### Script 1
+
+Script file: [section_2_script_1.py](./test_scripts/section_2_script_1.py)
+Coverage log: [section_2_script_1.log](./test_scripts/section_2_script_1.log)
+
+---
+
+### Script 2
+
+Script file: [section_2_script_2.py](./test_scripts/section_2_script_2.py)
+Coverage log: [section_2_script_2.log](./test_scripts/section_2_script_2.log)
+
+---
+
+### Script 3
+
+Script file: [section_2_script_3.py](./test_scripts/section_2_script_3.py)
+Coverage log: [section_2_script_3.log](./test_scripts/section_2_script_3.log)
+
+---
+
+### Script 4
+
+Script file: [section_2_script_4.py](./test_scripts/section_2_script_4.py)
+Coverage log: [section_2_script_4.log](./test_scripts/section_2_script_4.log)
+
+---
+
+## Identified Chunks
+
+- Coverage_files: 1
+  Relevant Paths: vram\EmulatorPkg\Win\Host\WinHost.c
+  line_numbers: 1-139
+  Task: Initialize EDK II WIN Host Emulation Environment
+- Coverage_files: 1
+  Relevant Paths: vram\EmulatorPkg\Win\Host\WinHost.c
+  line_numbers: 140-304
+  Task: Provide Emulation Layer for Windows on UEFI Firmware
+- Coverage_files: 1
+  Relevant Paths: vram\EmulatorPkg\Win\Host\WinHost.c
+  line_numbers: 440-542
+  Task: Initialize EDK II WIN Host Emulation Environment
+## Generated Test Scripts
+
+### Script 1
+
+Script file: [section_3_script_1.py](./test_scripts/section_3_script_1.py)
+Coverage log: [section_3_script_1.log](./test_scripts/section_3_script_1.log)
+
+---
+
+### Script 2
+
+Script file: [section_3_script_2.py](./test_scripts/section_3_script_2.py)
+Coverage log: [section_3_script_2.log](./test_scripts/section_3_script_2.log)
+
+---
+
+### Script 3
+
+Script file: [section_3_script_3.py](./test_scripts/section_3_script_3.py)
+Coverage log: [section_3_script_3.log](./test_scripts/section_3_script_3.log)
+
+---
+
+## Identified Chunks
+
+- Coverage_files: 1
+  Relevant Paths: vram\EmulatorPkg\Win\Host\WinHost.c
+  line_numbers: 654-774
+  Task: Initialize and load SEC Core
+- Coverage_files: 1
+  Relevant Paths: vram\EmulatorPkg\Win\Host\WinHost.c
+  line_numbers: 775-972
+  Task: Load PEI Core and transfer control to SEC Core
+## Generated Test Scripts
+
+### Script 1
+
+Script file: [section_4_script_1.py](./test_scripts/section_4_script_1.py)
+Coverage log: [section_4_script_1.log](./test_scripts/section_4_script_1.log)
+
+---
+
+### Script 2
+
+Script file: [section_4_script_2.py](./test_scripts/section_4_script_2.py)
+Coverage log: [section_4_script_2.log](./test_scripts/section_4_script_2.log)
+
+---
+
+## Identified Chunks
+
+- Coverage_files: 1
+  Relevant Paths: vram\FatPkg\EnhancedFatDxe\Data.c
+  line_numbers: 1-40
+  Task: Initialization
+- Coverage_files: 1
+  Relevant Paths: vram\FatPkg\EnhancedFatDxe\ComponentName.c
+  line_numbers: 1-81
+  Task: Driver Name Retrieval
+- Coverage_files: 1
+  Relevant Paths: vram\FatPkg\EnhancedFatDxe\ComponentName.c
+  line_numbers: 82-180
+  Task: Controller Name Retrieval
+## Generated Test Scripts
+
+### Script 1
+
+Script file: [section_5_script_1.py](./test_scripts/section_5_script_1.py)
+Coverage log: [section_5_script_1.log](./test_scripts/section_5_script_1.log)
+
+---
+
+### Script 2
+
+Script file: [section_5_script_2.py](./test_scripts/section_5_script_2.py)
+Coverage log: [section_5_script_2.log](./test_scripts/section_5_script_2.log)
+
+---
+
+### Script 3
+
+Script file: [section_5_script_3.py](./test_scripts/section_5_script_3.py)
+Coverage log: [section_5_script_3.log](./test_scripts/section_5_script_3.log)
+
+---
+
+## Identified Chunks
+
+- Coverage_files: 165
+  Relevant Paths: vram\FatPkg\EnhancedFatDxe\FileName.c
+  line_numbers: 1-165
+  Task: File system validation
+- Coverage_files: 323
+  Relevant Paths: vram\FatPkg\EnhancedFatDxe\FileName.c
+  line_numbers: 166-323
+  Task: File system name generation
+- Coverage_files: 494
+  Relevant Paths: vram\FatPkg\EnhancedFatDxe\FileName.c
+  line_numbers: 324-494
+  Task: File system name processing and validation
+- Coverage_files: 162
+  Relevant Paths: vram\EmulatorPkg\Win\Host\WinGopInput.c
+  line_numbers: 1-162
+  Task: Keyboard queue management
+## Generated Test Scripts
+
+### Script 1
+
+Script file: [section_6_script_1.py](./test_scripts/section_6_script_1.py)
+Coverage log: [section_6_script_1.log](./test_scripts/section_6_script_1.log)
+
+---
+
+### Script 2
+
+Script file: [section_6_script_2.py](./test_scripts/section_6_script_2.py)
+Coverage log: [section_6_script_2.log](./test_scripts/section_6_script_2.log)
+
+---
+
+### Script 3
+
+Script file: [section_6_script_3.py](./test_scripts/section_6_script_3.py)
+Coverage log: [section_6_script_3.log](./test_scripts/section_6_script_3.log)
+
+---
+
+### Script 4
+
+Script file: [section_6_script_4.py](./test_scripts/section_6_script_4.py)
+Coverage log: [section_6_script_4.log](./test_scripts/section_6_script_4.log)
+
+---
+
+## Identified Chunks
+
+- Coverage_files: 1
+  Relevant Paths: vram\EmulatorPkg\Win\Host\WinThunk.c
+  line_numbers: 1-148
+  Task: Configure and interact with standard input and output streams
+- Coverage_files: 2
+  Relevant Paths: vram\EmulatorPkg\Win\Host\WinThunk.c
+  line_numbers: 149-324
+  Task: Manage a timer thread and handle keyboard input events
+- Coverage_files: 3
+  Relevant Paths: vram\EmulatorPkg\Win\Host\WinGopInput.c
+  line_numbers: 329-470
+  Task: Read keystroke information from the input device and return keystroke state data
+## Generated Test Scripts
+
+### Script 1
+
+Script file: [section_7_script_1.py](./test_scripts/section_7_script_1.py)
+Coverage log: [section_7_script_1.log](./test_scripts/section_7_script_1.log)
+
+---
+
+### Script 2
+
+Script file: [section_7_script_2.py](./test_scripts/section_7_script_2.py)
+Coverage log: [section_7_script_2.log](./test_scripts/section_7_script_2.log)
+
+---
+
+### Script 3
+
+Script file: [section_7_script_3.py](./test_scripts/section_7_script_3.py)
+Coverage log: [section_7_script_3.log](./test_scripts/section_7_script_3.log)
+
+---
+
+## Identified Chunks
+
+- Coverage_files: 1
+  Relevant Paths: vram\EmulatorPkg\Win\Host\WinThunk.c
+  line_numbers: 325-526
+  Task: timer management
+- Coverage_files: 1
+  Relevant Paths: vram\EmulatorPkg\Win\Host\WinThunk.c
+  line_numbers: 527-614
+  Task: system time
+- Coverage_files: 1
+  Relevant Paths: vram\EmulatorPkg\Win\Host\WinBlockIo.c
+  line_numbers: 1-159
+  Task: block I/O operations
+- Coverage_files: 1
+  Relevant Paths: vram\EmulatorPkg\Win\Host\WinBlockIo.c
+  line_numbers: 160-265
+  Task: block I/O operations
+- Coverage_files: 1
+  Relevant Paths: vram\EmulatorPkg\Win\Host\WinBlockIo.c
+  line_numbers: 266-347
+  Task: block I/O operations
+## Generated Test Scripts
+
+### Script 1
+
+Script file: [section_8_script_1.py](./test_scripts/section_8_script_1.py)
+Coverage log: [section_8_script_1.log](./test_scripts/section_8_script_1.log)
+
+---
+
+### Script 2
+
+Script file: [section_8_script_2.py](./test_scripts/section_8_script_2.py)
+Coverage log: [section_8_script_2.log](./test_scripts/section_8_script_2.log)
+
+---
+
+### Script 3
+
+Script file: [section_8_script_3.py](./test_scripts/section_8_script_3.py)
+Coverage log: [section_8_script_3.log](./test_scripts/section_8_script_3.log)
+
+---
+
+### Script 4
+
+Script file: [section_8_script_4.py](./test_scripts/section_8_script_4.py)
+Coverage log: [section_8_script_4.log](./test_scripts/section_8_script_4.log)
+
+---
+
+### Script 5
+
+Script file: [section_8_script_5.py](./test_scripts/section_8_script_5.py)
+Coverage log: [section_8_script_5.log](./test_scripts/section_8_script_5.log)
+
+---
+
+## Identified Chunks
+
+- Coverage_files: ['WinBlockIo.c', 'WinMemoryAllocationLib.c']
+  Relevant Paths: vram\EmulatorPkg\Win\Host
+  line_numbers: ['348-474', '475-550', '1-146', '147-176']
+  Task: Implementing block I/O protocol and memory allocation functions
+- Coverage_files: ['DiskCache.c']
+  Relevant Paths: vram\FatPkg\EnhancedFatDxe
+  line_numbers: ['1-115']
+  Task: Invalidating or updating cache entries for the FAT file system driver
+## Generated Test Scripts
+
+### Script 1
+
+Script file: [section_9_script_1.py](./test_scripts/section_9_script_1.py)
+Coverage log: [section_9_script_1.log](./test_scripts/section_9_script_1.log)
+
+---
+
+### Script 2
+
+Script file: [section_9_script_2.py](./test_scripts/section_9_script_2.py)
+Coverage log: [section_9_script_2.log](./test_scripts/section_9_script_2.log)
+
+---
+
+## Identified Chunks
+
+- Coverage_files: ['DiskCache.c']
+  Relevant Paths: vram\FatPkg\EnhancedFatDxe\DiskCache.c
+  line_numbers: 116-240
+  Task: Retrieve cache page from disk storage
+- Coverage_files: ['DiskCache.c']
+  Relevant Paths: vram\FatPkg\EnhancedFatDxe\DiskCache.c
+  line_numbers: 241-356
+  Task: Access data from FAT cache or disk
+- Coverage_files: ['DiskCache.c']
+  Relevant Paths: vram\FatPkg\EnhancedFatDxe\DiskCache.c
+  line_numbers: 357-484
+  Task: Flush dirty cache data back to disk
+- Coverage_files: ['DiskCache.c']
+  Relevant Paths: vram\FatPkg\EnhancedFatDxe\DiskCache.c
+  line_numbers: 485-489
+  Task: Allocate and configure memory buffers for caching
+- Coverage_files: ['FileSpace.c']
+  Relevant Paths: vram\FatPkg\EnhancedFatDxe\FileSpace.c
+  line_numbers: 1-168
+  Task: Set the value of a FAT entry in a FAT file system volume
+## Generated Test Scripts
+
+### Script 1
+
+Script file: [section_10_script_1.py](./test_scripts/section_10_script_1.py)
+Coverage log: [section_10_script_1.log](./test_scripts/section_10_script_1.log)
+
+---
+
+### Script 2
+
+Script file: [section_10_script_2.py](./test_scripts/section_10_script_2.py)
+Coverage log: [section_10_script_2.log](./test_scripts/section_10_script_2.log)
+
+---
+
+### Script 3
+
+Script file: [section_10_script_3.py](./test_scripts/section_10_script_3.py)
+Coverage log: [section_10_script_3.log](./test_scripts/section_10_script_3.log)
+
+---
+
+### Script 4
+
+Script file: [section_10_script_4.py](./test_scripts/section_10_script_4.py)
+Coverage log: [section_10_script_4.log](./test_scripts/section_10_script_4.log)
+
+---
+
+### Script 5
+
+Script file: [section_10_script_5.py](./test_scripts/section_10_script_5.py)
+Coverage log: [section_10_script_5.log](./test_scripts/section_10_script_5.log)
+
+---
 

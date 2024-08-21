@@ -35,9 +35,9 @@ from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
 llm = HuggingFacePipeline.from_model_id(
     model_id="akjindal53244/Llama-3.1-Storm-8B",
     task="text-generation",
-    device="cuda",
+    device=0,
     model_kwargs={"torch_dtype": torch.bfloat16},
-    pipeline_kwargs={"max_new_tokens": 1000, "do_sample": True, "temperature": 0.01, "top_k": 100, "top_p": 0.95}
+    pipeline_kwargs={"max_new_tokens": 256, "do_sample": True, "temperature": 0.01, "top_k": 100, "top_p": 0.95}
 )
 
 
@@ -205,7 +205,6 @@ try:
         agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
         verbose=False,
         handle_parsing_errors=True,
-        rate_limiter=rate_limiter
     )
 except Exception as e:
     print(f"Error initializing agent: {e}")
@@ -263,6 +262,11 @@ for section, start_row in enumerate(range(0, total_rows, section_size), 1):
         print(f"Elapsed time: {elapsed_time:.2f} seconds")
         print(f"Estimated time left: {estimated_time_left:.2f} seconds")
 
+        messages = [
+            {"role": "system", "content": "You are a Plan Generator and provide a list of dictionaries with"},
+            {"role": "user", "content": "What is 2+2?"}
+        ]
+
         llm_context = f"""
         Here is a section of the CSV file (rows {start_row} to {end_row - 1}):
 
@@ -274,9 +278,8 @@ for section, start_row in enumerate(range(0, total_rows, section_size), 1):
         """  # Truncate to 2000 characters
 
         llm_plan = llm.invoke(llm_context)
-        time.sleep(10)  # Increased delay between API calls
-
-        plan_list = extract_dicts_from_llm_output(llm_plan.content)
+        print(llm_plan)
+        plan_list = extract_dicts_from_llm_output(llm_plan)
 
         for item in plan_list:
             coverage_files = item.get('coverage_files', 'Coverage files not provided')
@@ -308,7 +311,7 @@ for section, start_row in enumerate(range(0, total_rows, section_size), 1):
                 print("The Script input for the following nodes are : ", script_input)
                 print("-----------------------------------------------------------------------------------------------------------------")
                 print("The result for the following nodes are : ", result)
-                time.sleep(10)  # Increased delay between API calls
+
                 test_scripts.append(result['output'])  # Truncate to 2000 characters
             else:
                 print("Agent not initialized. Skipping test script generation.")
@@ -321,7 +324,7 @@ for section, start_row in enumerate(range(0, total_rows, section_size), 1):
         print("##############################################################################################################")
         section_time = time.time() - section_start_time
         print(f"Time taken for this section: {section_time:.2f} seconds")
-        time.sleep(10)  # Increased delay between sections
+  # Increased delay between sections
 
     except Exception as e:
         print(f"Error processing rows {start_row} to {end_row - 1}: {e}")

@@ -1,0 +1,9 @@
+Coverage for section_4_script_1.py:
+Coverage_files: 1
+Relevant Paths: vram\EmulatorPkg\Win\Host\WinHost.c
+line_numbers: 654-774
+  Task: Initialize and load SEC Core
+Coverage_files: 1
+Relevant Paths: vram\EmulatorPkg\Win\Host\WinHost.c
+line_numbers: 775-972
+  Task: Load PEI Core and transfer control to SEC Core

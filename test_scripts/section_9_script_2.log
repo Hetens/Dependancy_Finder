@@ -1,0 +1,9 @@
+Coverage for section_9_script_2.py:
+Coverage_files: ['WinBlockIo.c', 'WinMemoryAllocationLib.c']
+Relevant Paths: vram\EmulatorPkg\Win\Host
+line_numbers: ['348-474', '475-550', '1-146', '147-176']
+  Task: Implementing block I/O protocol and memory allocation functions
+Coverage_files: ['DiskCache.c']
+Relevant Paths: vram\FatPkg\EnhancedFatDxe
+line_numbers: ['1-115']
+  Task: Invalidating or updating cache entries for the FAT file system driver
