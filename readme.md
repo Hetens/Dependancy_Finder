@@ -16,6 +16,16 @@ To use this repository, follow these steps:
      ```plaintext
      CODEBASE=/path/to/your/codebase
      ```
+   - Current .env variables set are
+      ```plaintext
+      CODEBASE = path to codebase
+      // DELL DIGITAL CLOUD API KEY
+      API_KEY = 
+      //Dell Digital Cloud API URL
+      API_URL =
+      //GROQ CLOUD API KEY FOR LATEST OPEN SOURCE MODELS WITH SUPER FAST INFERENCE
+      GROQ_API_KEY =
+      ```
 
 2. **Step 1: Execute `file_read.py`:**
    - This script reads and processes the files in your codebase as specified in the `.env` file.
@@ -25,6 +35,8 @@ To use this repository, follow these steps:
 
 4. **Step 3: Run `test_generator.py`:**
    - This script generates the test scripts based on the gathered information. It also logs the process and stores the logs and generated test scripts in the `test_scripts` directory.
+5. **Step 3-ALTERNATE  : Run `test_generator_local.py`:**
+   - THIS PERFORMS THE SAME TASK AS THE TEST_GENERATOR but THE MODEL IS LOADED LOCALLY ONTO MEMORY. May be computationally intensive depending on the model.
 
 ## Outputs
 
