@@ -1,6 +1,3 @@
-Here's a draft for your `README.md`:
-
----
 
 # TEST AUTOMATION SCRIPT GENERATOR
 
@@ -19,10 +16,6 @@ To use this repository, follow these steps:
    - Current .env variables set are
       ```plaintext
       CODEBASE = path to codebase
-      // DELL DIGITAL CLOUD API KEY
-      API_KEY = 
-      //Dell Digital Cloud API URL
-      API_URL =
       //GROQ CLOUD API KEY FOR LATEST OPEN SOURCE MODELS WITH SUPER FAST INFERENCE
       GROQ_API_KEY =
       ```
